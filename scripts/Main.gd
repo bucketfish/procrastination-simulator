@@ -6,7 +6,7 @@ onready var char_anim = $Character/AnimationPlayer
 
 onready var buttons = $CanvasLayer/Buttons
 onready var game_timer = $game_timer
-onready var action_timer = $action_timer
+onready var homework_timer = $homework_timer
 
 onready var homeworkbar = $CanvasLayer/HomeWorkBar
 onready var actionbar = $CanvasLayer/ActivityProgress
@@ -39,14 +39,14 @@ func _ready():
 func do_action(actionname):
 	print(actionname)
 	buttons.visible = false
-	action_timer.wait_time = actions[actionname].time
+	homework_timer.wait_time = actions[actionname].time
 	actionbar.max_value = actions[actionname].time
 	char_anim.play(actionname)
 	
-	action_timer.start()
+	homework_timer.start()
 	game_timer.paused = true
 	
-	yield(action_timer, "timeout")
+	yield(homework_timer, "timeout")
 	game_timer.paused = false
 
 	char_anim.play("idle")
@@ -55,5 +55,5 @@ func do_action(actionname):
 
 func _process(delta):
 	homeworkbar.value = homeworkbar.max_value - game_timer.time_left
-	actionbar.value = actionbar.max_value - action_timer.time_left
+	actionbar.value = actionbar.max_value - homework_timer.time_left
 	

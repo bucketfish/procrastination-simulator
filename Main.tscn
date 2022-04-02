@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
@@ -508,6 +508,53 @@ tracks/5/keys = {
 "values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
 }
 
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("door:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 7.58303e-21, -90, 90 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "door_open"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("door:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.8, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "door_open_bad"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("door:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 3.8, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
+}
+
 [node name="main" type="Spatial"]
 script = ExtResource( 14 )
 
@@ -653,13 +700,18 @@ alpha_cut = 2
 texture = ExtResource( 13 )
 
 [node name="door" type="Sprite3D" parent="."]
-transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, 0, -1.09278e-08, -0.2, -8.74228e-09, 1.43351, 1.17752, 0.184098 )
+transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.43351, 1.17752, 0.184098 )
 offset = Vector2( 0, 300 )
 texture = ExtResource( 1 )
 
 [node name="action_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="game_timer" type="Timer" parent="."]
+[node name="homework_timer" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/door_open = SubResource( 12 )
+anims/door_open_bad = SubResource( 13 )
