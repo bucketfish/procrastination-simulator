@@ -1,7 +1,5 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
-[ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
 [ext_resource path="res://textures/player/spritesheet.png" type="Texture" id=5]
@@ -13,25 +11,8 @@
 [ext_resource path="res://textures/things_on_table/screen_spritesheet.png" type="Texture" id=11]
 [ext_resource path="res://textures/things_on_table/keyboard.png" type="Texture" id=12]
 [ext_resource path="res://textures/things_on_table/table.png" type="Texture" id=13]
-
-[sub_resource type="DynamicFont" id=1]
-size = 32
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxEmpty" id=2]
-
-[sub_resource type="Theme" id=3]
-Label/colors/font_color = Color( 1, 1, 1, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
-Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
-Label/constants/line_spacing = 3
-Label/constants/shadow_as_outline = 0
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/fonts/font = SubResource( 1 )
-Label/styles/normal = SubResource( 2 )
+[ext_resource path="res://scripts/Main.gd" type="Script" id=14]
+[ext_resource path="res://other_resources/action_button.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -524,7 +505,8 @@ tracks/5/keys = {
 "values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
 }
 
-[node name="Spatial" type="Spatial"]
+[node name="main" type="Spatial"]
+script = ExtResource( 14 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -536,104 +518,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtonCenter" type="TextureButton" parent="CanvasLayer/Buttons"]
-self_modulate = Color( 0.545098, 0.713726, 0.580392, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 50.0
-margin_top = -403.0
-margin_right = 306.0
-margin_bottom = -147.0
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ActionButtonLeft" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
+margin_left = -429.0
+margin_top = -394.0
+margin_right = -173.0
+margin_bottom = -138.0
 
-[node name="ActionButtonLabel" type="Label" parent="CanvasLayer/Buttons/ActionButtonCenter"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -99.5
-margin_top = -46.5
-margin_right = 99.5
-margin_bottom = 46.5
-theme = SubResource( 3 )
-text = "Stare blankly outside"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ActionButtonCenter" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
+margin_left = 14.0
+margin_top = -515.0
+margin_right = 270.0
+margin_bottom = -259.0
 
-[node name="ActionButtonLeft" type="TextureButton" parent="CanvasLayer/Buttons"]
-self_modulate = Color( 0.180392, 0.52549, 0.670588, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -387.0
-margin_top = -345.0
-margin_right = -131.0
-margin_bottom = -89.0
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ActionButtonLabel" type="Label" parent="CanvasLayer/Buttons/ActionButtonLeft"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -99.5
-margin_top = -46.5
-margin_right = 99.5
-margin_bottom = 46.5
-theme = SubResource( 3 )
-text = "Huh can't see this well"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ActionButtonRight" type="TextureButton" parent="CanvasLayer/Buttons"]
-self_modulate = Color( 0.839216, 0.631373, 0.458824, 1 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 373.0
-margin_top = -117.0
-margin_right = 629.0
-margin_bottom = 139.0
-texture_normal = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ActionButtonLabel" type="Label" parent="CanvasLayer/Buttons/ActionButtonRight"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -99.5
-margin_top = -46.5
-margin_right = 99.5
-margin_bottom = 46.5
-theme = SubResource( 3 )
-text = "Check Disjoint"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ActionButtonRight" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
+margin_left = 291.0
+margin_top = -203.0
+margin_right = 547.0
+margin_bottom = 53.0
 
 [node name="HomeWorkBar" type="ProgressBar" parent="CanvasLayer"]
 anchor_left = 0.5
