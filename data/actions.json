@@ -1,23 +1,28 @@
 {
     "disjoint": {
         "colour": "2e86ab",
-        "text": "Check Disjoint"
+        "text": "Check Disjoint",
+        "time": 2
     },
     "outside": {
         "colour": "8bb694",
-        "text": "Stare blankly outside"
+        "text": "Stare blankly outside",
+        "time": 1.6
     },
     "snack": {
         "colour": "d6a175",
-        "text": "Go get a snack"
+        "text": "Go get a snack",
+        "time": 3.2
     },
     "themtube": {
         "colour": "D23842",
-        "text": "Watch a ThemTube video"
+        "text": "Watch a ThemTube video",
+        "time": 2.4
     },
     "hydrate": {
         "colour": "8980F5",
-        "text": "Have a sip of water"
+        "text": "Have a sip of water",
+        "time": 4
     },
     "random": {
         "colour": "F9CFF2",

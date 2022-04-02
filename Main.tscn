@@ -103,7 +103,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "disjoint"
-length = 0.001
+length = 0.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -147,10 +148,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector3( -0.871193, 1.39787, -1.06619 ), Vector3( -0.871193, 1.29228, -1.06619 ), Vector3( -0.871193, 1.39787, -1.06619 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("../lefthand:translation")
@@ -159,10 +160,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -1.02786, 0.878936, -0.689528 ) ]
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ Vector3( -1.02786, 0.865745, -0.689528 ), Vector3( -1.02786, 0.972611, -0.689528 ), Vector3( -1.02786, 0.865745, -0.689528 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("../righthand:visible")
@@ -178,8 +179,9 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=9]
-resource_name = "drink"
+resource_name = "hydrate"
 length = 2.0
+loop = true
 step = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -236,60 +238,6 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "eat"
-length = 1.6
-loop = true
-step = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("../righthand:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../lefthand:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../computer_screen:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -375,7 +323,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id=10]
-resource_name = "stare"
+resource_name = "outside"
 length = 0.4
 loop = true
 step = 0.2
@@ -426,6 +374,60 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "snack"
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../righthand:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../lefthand:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../computer_screen:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -590,10 +592,10 @@ vframes = 5
 autoplay = "idle"
 anims/RESET = SubResource( 4 )
 anims/disjoint = SubResource( 7 )
-anims/drink = SubResource( 9 )
-anims/eat = SubResource( 5 )
+anims/hydrate = SubResource( 9 )
 anims/idle = SubResource( 6 )
-anims/stare = SubResource( 10 )
+anims/outside = SubResource( 10 )
+anims/snack = SubResource( 5 )
 anims/themtube = SubResource( 8 )
 
 [node name="righthand" type="Sprite3D" parent="."]

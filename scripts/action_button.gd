@@ -4,6 +4,7 @@ extends TextureButton
 export var action:String
 
 onready var label = $ActionButtonLabel
+onready var main = get_node("/root/main")
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -18,3 +19,7 @@ func set_label(data):
 	self_modulate = data[data.keys()[0]].colour
 	label.text = data[data.keys()[0]].text
 	action = data.keys()[0]
+
+
+func _on_ActionButtonCenter_pressed():
+	main.do_action(action)
