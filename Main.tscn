@@ -1,23 +1,43 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
+[ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
 
-[sub_resource type="Theme" id=2]
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 2 )
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="Theme" id=3]
+Label/colors/font_color = Color( 1, 1, 1, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+Label/constants/line_spacing = 3
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = SubResource( 1 )
+Label/styles/normal = SubResource( 2 )
+
+[sub_resource type="CubeMesh" id=4]
 
 [node name="Spatial" type="Spatial"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Buttons" type="Control" parent="CanvasLayer"]
 margin_right = 1920.0
 margin_bottom = 1080.0
+script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtonLeft" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="ActionButtonCenter" type="TextureButton" parent="CanvasLayer/Buttons"]
 self_modulate = Color( 0.545098, 0.713726, 0.580392, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -32,7 +52,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="CanvasLayer/Control/ActionButtonLeft"]
+[node name="ActionButtonLabel" type="Label" parent="CanvasLayer/Buttons/ActionButtonCenter"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -41,13 +61,17 @@ margin_left = -99.5
 margin_top = -46.5
 margin_right = 99.5
 margin_bottom = 46.5
-theme = SubResource( 2 )
+theme = SubResource( 3 )
+text = "Stare blankly outside"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="ActionButtonCenter" type="TextureButton" parent="CanvasLayer/Control"]
-self_modulate = Color( 0.945098, 0.937255, 0.756863, 1 )
+[node name="ActionButtonLeft" type="TextureButton" parent="CanvasLayer/Buttons"]
+self_modulate = Color( 0.180392, 0.52549, 0.670588, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -61,7 +85,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtonRight" type="TextureButton" parent="CanvasLayer/Control"]
+[node name="ActionButtonLabel" type="Label" parent="CanvasLayer/Buttons/ActionButtonLeft"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.5
+margin_top = -46.5
+margin_right = 99.5
+margin_bottom = 46.5
+theme = SubResource( 3 )
+text = "Huh can't see this well"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionButtonRight" type="TextureButton" parent="CanvasLayer/Buttons"]
 self_modulate = Color( 0.839216, 0.631373, 0.458824, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -76,8 +118,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ActionButtonLabel" type="Label" parent="CanvasLayer/Buttons/ActionButtonRight"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.5
+margin_top = -46.5
+margin_right = 99.5
+margin_bottom = 46.5
+theme = SubResource( 3 )
+text = "Check Disjoint"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 1 )
+mesh = SubResource( 4 )
 material/0 = null
 
 [node name="Camera" type="Camera" parent="."]

@@ -1,0 +1,26 @@
+{
+    "disjoint": {
+        "colour": "2e86ab",
+        "text": "Check Disjoint"
+    },
+    "outside": {
+        "colour": "8bb694",
+        "text": "Stare blankly outside"
+    },
+    "snack": {
+        "colour": "d6a175",
+        "text": "Go get a snack"
+    },
+    "themtube": {
+        "colour": "D23842",
+        "text": "Watch a ThemTube video"
+    },
+    "hydrate": {
+        "colour": "8980F5",
+        "text": "Have a sip of water"
+    },
+    "random": {
+        "colour": "F9CFF2",
+        "text": "Random distraction"
+    }
+}
