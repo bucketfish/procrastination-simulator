@@ -99,12 +99,16 @@ func _on_game_timer_timeout():
 	# every time the parent comes in
 	
 	gametimecount += 1;
+	buttons.hide_buttons()
 	
 	if doingaction:
 		parent_anim.play("door_open_bad")
 		stop_action()
 	else:
 		parent_anim.play("door_open")
+		
+	yield(parent_anim, "animation_finished")
+	buttons.draw_buttons()
 	
 func go_fast(value):
 	if value:
