@@ -656,3 +656,10 @@ texture = ExtResource( 13 )
 transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, 0, -1.09278e-08, -0.2, -8.74228e-09, 1.43351, 1.17752, 0.184098 )
 offset = Vector2( 0, 300 )
 texture = ExtResource( 1 )
+
+[node name="action_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="game_timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
