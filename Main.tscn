@@ -765,7 +765,7 @@ transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.068434
 axis = 1
 shaded = true
 double_sided = false
-alpha_cut = 1
+alpha_cut = 2
 texture = ExtResource( 12 )
 
 [node name="computer_screen" type="Sprite3D" parent="."]
@@ -777,7 +777,7 @@ hframes = 2
 vframes = 2
 
 [node name="door" type="Sprite3D" parent="."]
-transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.43351, 1.17752, 0.184098 )
+transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.47412, 1.17752, 0.184098 )
 offset = Vector2( 0, 300 )
 shaded = true
 texture = ExtResource( 1 )
@@ -858,10 +858,18 @@ texture = ExtResource( 13 )
 environment = SubResource( 21 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.46539, 1.96449 )
-light_color = Color( 0.780392, 0.458824, 1, 1 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.483, 2.019 )
+visible = false
+light_energy = 8.0
 shadow_enabled = true
 omni_range = 4.31507
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( -0.770902, 0, -0.636953, 0, 1, 0, 0.636953, 0, -0.770902, -1.33645, 1.07112, -1.45277 )
+light_color = Color( 0.839216, 0.129412, 0.780392, 1 )
+light_energy = 16.0
+spot_range = 0.929349
+spot_angle = 52.272
 
 [connection signal="timeout" from="homework_timer" to="." method="_on_homework_timer_timeout"]
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
