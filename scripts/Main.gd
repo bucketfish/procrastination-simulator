@@ -7,15 +7,20 @@ onready var char_anim = $Character/AnimationPlayer
 onready var buttons = $CanvasLayer/Buttons
 onready var game_timer = $game_timer
 onready var homework_timer = $homework_timer
+onready var action_timer = $action_timer
 
 onready var homeworkbar = $CanvasLayer/HomeWorkBar
 onready var actionbar = $CanvasLayer/ActivityProgress
+
+onready var clock_min = $clock/minute
+onready var clock_hour = $clock/hour
 
 var data_file
 var actions_json
 var actions
 
-var gametime = 30
+var homeworktime = 30
+var gametime = 60
 
 var curactiontime
 # Called when the node enters the scene tree for the first time.
@@ -27,33 +32,51 @@ func _ready():
 	actions_json = JSON.parse(data_file)
 	actions = actions_json.result
 	
+	# tutorial? menu? first
+	
+	start_game()
+	
+func start_game():
+	# button selection
 	buttons.draw_buttons()
 	
+	# prep timer
 	game_timer.wait_time = gametime
-	homeworkbar.max_value = gametime
-	
 	game_timer.start()
+	
+	homework_timer.wait_time = homeworktime
+	homework_timer.start()
+	
+	homeworkbar.max_value = homeworktime
+	
+	# prep clock
+	clock_hour.rotation_degrees.z = 30
+	clock_min.rotation_degrees.z = -180
 	
 
 
 func do_action(actionname):
 	print(actionname)
 	buttons.visible = false
-	homework_timer.wait_time = actions[actionname].time
+	action_timer.wait_time = actions[actionname].time
 	actionbar.max_value = actions[actionname].time
 	char_anim.play(actionname)
 	
-	homework_timer.start()
-	game_timer.paused = true
+	action_timer.start()
+	homework_timer.paused = true
 	
-	yield(homework_timer, "timeout")
-	game_timer.paused = false
+	yield(action_timer, "timeout")
+	homework_timer.paused = false
 
 	char_anim.play("idle")
 	buttons.draw_buttons()
 
 
 func _process(delta):
-	homeworkbar.value = homeworkbar.max_value - game_timer.time_left
-	actionbar.value = actionbar.max_value - homework_timer.time_left
+	homeworkbar.value = homeworkbar.max_value - homework_timer.time_left
+	actionbar.value = actionbar.max_value - action_timer.time_left
+	
+	clock_min.rotation_degrees.z = -180 + 360 * (game_timer.time_left / gametime)
+	
+	
 	

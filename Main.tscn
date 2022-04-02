@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
+[ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
 [ext_resource path="res://textures/player/spritesheet.png" type="Texture" id=5]
@@ -14,6 +15,8 @@
 [ext_resource path="res://textures/things_on_table/table.png" type="Texture" id=13]
 [ext_resource path="res://scripts/Main.gd" type="Script" id=14]
 [ext_resource path="res://other_resources/action_button.tscn" type="PackedScene" id=15]
+[ext_resource path="res://textures/clock/minute.png" type="Texture" id=16]
+[ext_resource path="res://textures/clock/hour.png" type="Texture" id=17]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -584,16 +587,16 @@ margin_right = -173.0
 margin_bottom = -138.0
 
 [node name="ActionButtonCenter" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
-margin_left = 14.0
-margin_top = -515.0
-margin_right = 270.0
-margin_bottom = -259.0
+margin_left = -83.0
+margin_top = -511.0
+margin_right = 173.0
+margin_bottom = -255.0
 
 [node name="ActionButtonRight" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
-margin_left = 291.0
-margin_top = -203.0
-margin_right = 547.0
-margin_bottom = 53.0
+margin_left = 283.0
+margin_top = -420.0
+margin_right = 539.0
+margin_bottom = -164.0
 
 [node name="HomeWorkBar" type="ProgressBar" parent="CanvasLayer"]
 anchor_left = 0.5
@@ -727,3 +730,18 @@ anims/door_open_bad = SubResource( 13 )
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51046, 0 )
 omni_range = 4.142
+
+[node name="clock" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.993943, 1.31591, -1.68335 )
+
+[node name="back" type="Sprite3D" parent="clock"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 2 )
+
+[node name="hour" type="Sprite3D" parent="clock"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.02 )
+texture = ExtResource( 17 )
+
+[node name="minute" type="Sprite3D" parent="clock"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.00999999 )
+texture = ExtResource( 16 )
