@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
+
+[sub_resource type="Theme" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_right = 1920.0
+margin_bottom = 1080.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionButtonLeft" type="TextureButton" parent="CanvasLayer/Control"]
+self_modulate = Color( 0.545098, 0.713726, 0.580392, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -416.0
+margin_right = 128.0
+margin_bottom = -160.0
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Control/ActionButtonLeft"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.5
+margin_top = -46.5
+margin_right = 99.5
+margin_bottom = 46.5
+theme = SubResource( 2 )
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ActionButtonCenter" type="TextureButton" parent="CanvasLayer/Control"]
+self_modulate = Color( 0.945098, 0.937255, 0.756863, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -488.0
+margin_top = -208.0
+margin_right = -232.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionButtonRight" type="TextureButton" parent="CanvasLayer/Control"]
+self_modulate = Color( 0.839216, 0.631373, 0.458824, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 232.0
+margin_top = -208.0
+margin_right = 488.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.942519, 0.334152, 0, -0.334152, 0.942519, 0.935976, 1.214, 3.7888 )
+fov = 90.0
