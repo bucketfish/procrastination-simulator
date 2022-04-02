@@ -19,6 +19,10 @@ window/size/width=1920
 window/size/height=1080
 window/dpi/allow_hidpi=true
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/camera_monitor/plugin.cfg" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

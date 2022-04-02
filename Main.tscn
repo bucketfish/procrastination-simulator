@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
+[ext_resource path="res://assets/body.png" type="Texture" id=5]
+[ext_resource path="res://assets/3d/room.obj" type="ArrayMesh" id=6]
+[ext_resource path="res://assets/3d/table.obj" type="ArrayMesh" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -23,8 +26,6 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = SubResource( 1 )
 Label/styles/normal = SubResource( 2 )
-
-[sub_resource type="CubeMesh" id=4]
 
 [node name="Spatial" type="Spatial"]
 
@@ -175,10 +176,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-mesh = SubResource( 4 )
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.972663, 0.232223, 0, -0.232223, 0.972663, 0, 1.2, 1.946 )
+
+[node name="Character" type="Sprite3D" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.12445, 0.809051, -0.687233 )
+billboard = 1
+double_sided = false
+texture = ExtResource( 5 )
+
+[node name="Room" type="MeshInstance" parent="."]
+transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
+mesh = ExtResource( 6 )
 material/0 = null
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.942519, 0.334152, 0, -0.334152, 0.942519, 0.935976, 1.214, 3.7888 )
-fov = 90.0
+[node name="Table" type="MeshInstance" parent="."]
+transform = Transform( -2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -0.851621, 0.37444, -0.396729 )
+mesh = ExtResource( 7 )
+material/0 = null
+material/1 = null
