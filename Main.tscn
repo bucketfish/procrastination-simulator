@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
-[ext_resource path="res://assets/body.png" type="Texture" id=5]
+[ext_resource path="res://textures/player/spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://assets/3d/room.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://assets/3d/table.obj" type="ArrayMesh" id=7]
+[ext_resource path="res://textures/player/righthand.png" type="Texture" id=8]
+[ext_resource path="res://textures/player/lefthand.png" type="Texture" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -27,6 +29,148 @@ Label/constants/shadow_offset_y = 1
 Label/fonts/font = SubResource( 1 )
 Label/styles/normal = SubResource( 2 )
 
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../righthand:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "disjoint"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "drink"
+length = 2.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 15, 16, 17, 16, 17, 16, 17, 15, 14 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "eat"
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "idle"
+length = 0.8
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../righthand:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "stare"
+length = 0.4
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 18, 19 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "themtube"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+
 [node name="Spatial" type="Spatial"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -45,10 +189,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -128.0
-margin_top = -416.0
-margin_right = 128.0
-margin_bottom = -160.0
+margin_left = 50.0
+margin_top = -403.0
+margin_right = 306.0
+margin_bottom = -147.0
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -78,10 +222,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -488.0
-margin_top = -208.0
-margin_right = -232.0
-margin_bottom = 48.0
+margin_left = -387.0
+margin_top = -345.0
+margin_right = -131.0
+margin_bottom = -89.0
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -111,10 +255,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 232.0
-margin_top = -208.0
-margin_right = 488.0
-margin_bottom = 48.0
+margin_left = 373.0
+margin_top = -117.0
+margin_right = 629.0
+margin_bottom = 139.0
 texture_normal = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -177,13 +321,43 @@ __meta__ = {
 }
 
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.972663, 0.232223, 0, -0.232223, 0.972663, 0, 1.2, 1.946 )
+transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0, 1.47345, 4.255 )
+fov = 31.3
 
 [node name="Character" type="Sprite3D" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0.12445, 0.809051, -0.687233 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.10639, 1.35341, -0.560136 )
 billboard = 1
 double_sided = false
 texture = ExtResource( 5 )
+hframes = 4
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+autoplay = "idle"
+anims/RESET = SubResource( 4 )
+anims/disjoint = SubResource( 7 )
+anims/drink = SubResource( 9 )
+anims/eat = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/stare = SubResource( 10 )
+anims/themtube = SubResource( 8 )
+
+[node name="righthand" type="Sprite3D" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.70695, 1.05385, -0.714516 )
+offset = Vector2( 250, 100 )
+billboard = 1
+double_sided = false
+texture = ExtResource( 8 )
+vframes = 2
+
+[node name="lefthand" type="Sprite3D" parent="."]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.414453, 0.878936, -0.168537 )
+offset = Vector2( 200, 0 )
+billboard = 1
+double_sided = false
+texture = ExtResource( 9 )
+vframes = 2
+frame = 1
 
 [node name="Room" type="MeshInstance" parent="."]
 transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
