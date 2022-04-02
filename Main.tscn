@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -19,6 +19,10 @@
 [ext_resource path="res://textures/clock/hour.png" type="Texture" id=17]
 [ext_resource path="res://textures/ui/bubble.png" type="Texture" id=18]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=19]
+
+[sub_resource type="DynamicFont" id=19]
+size = 100
+font_data = ExtResource( 19 )
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -662,6 +666,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="win" type="Label" parent="CanvasLayer"]
+visible = false
+margin_left = 795.0
+margin_top = 579.0
+margin_right = 1374.0
+margin_bottom = 801.0
+custom_fonts/font = SubResource( 19 )
+text = "you win"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lose" type="Label" parent="CanvasLayer"]
+visible = false
+margin_left = 795.0
+margin_top = 579.0
+margin_right = 1374.0
+margin_bottom = 801.0
+custom_fonts/font = SubResource( 19 )
+text = "you lose"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0, 1.47345, 4.255 )
 fov = 31.3
@@ -799,7 +827,7 @@ margin_right = 547.0
 margin_bottom = 306.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 18 )
-text = "YAS YAS"
+text = "YAS"
 align = 1
 valign = 1
 autowrap = true
@@ -807,4 +835,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="timeout" from="homework_timer" to="." method="_on_homework_timer_timeout"]
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]

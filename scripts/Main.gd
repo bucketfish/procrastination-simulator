@@ -104,7 +104,11 @@ func _process(delta):
 func _on_game_timer_timeout():
 	# every time the parent comes in
 	
-	gametimecount += 1;
+	gametimecount += 1
+	
+	if gametimecount >= gametimemax:
+		end_game(true)
+	
 	buttons.hide_buttons()
 	
 	text_bubble.visible = true
@@ -125,6 +129,7 @@ func _on_game_timer_timeout():
 	text_bubble.visible = false
 	buttons.draw_buttons()
 	
+	
 func go_fast(value):
 	if value:
 		buttons.hide_buttons()
@@ -132,3 +137,17 @@ func go_fast(value):
 	else:
 		buttons.draw_buttons()
 		Engine.time_scale = 1.0
+		
+		
+func end_game(val):
+	# stop everything
+	
+	if val: # if ya winning
+		$CanvasLayer/win.visible = true
+	else: # lost the game
+		$CanvasLayer/lose.visible = true
+
+
+
+func _on_homework_timer_timeout():
+	end_game(false)
