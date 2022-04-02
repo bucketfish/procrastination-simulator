@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=2]
@@ -7,8 +7,12 @@
 [ext_resource path="res://textures/player/spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://assets/3d/room.obj" type="ArrayMesh" id=6]
 [ext_resource path="res://assets/3d/table.obj" type="ArrayMesh" id=7]
-[ext_resource path="res://textures/player/righthand.png" type="Texture" id=8]
+[ext_resource path="res://textures/player/writehand.png" type="Texture" id=8]
 [ext_resource path="res://textures/player/lefthand.png" type="Texture" id=9]
+[ext_resource path="res://textures/things_on_table/paper.png" type="Texture" id=10]
+[ext_resource path="res://textures/things_on_table/screen_spritesheet.png" type="Texture" id=11]
+[ext_resource path="res://textures/things_on_table/keyboard.png" type="Texture" id=12]
+[ext_resource path="res://textures/things_on_table/table.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -55,6 +59,66 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("../computer_screen:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../righthand:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.408375, 0.922143, -0.435435 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../lefthand:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../righthand:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../lefthand:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "disjoint"
@@ -70,6 +134,66 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 5 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../computer_screen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../righthand:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../righthand:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../lefthand:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -1.02786, 0.878936, -0.689528 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../righthand:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -88,6 +212,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 14, 15, 16, 17, 16, 17, 16, 17, 15, 14 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../lefthand:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../righthand:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.408375, 0.922143, -0.435435 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../righthand:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../computer_screen:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "eat"
@@ -105,6 +277,42 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 6, 7, 8, 9, 10, 11, 12, 13 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../righthand:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../lefthand:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../computer_screen:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -134,7 +342,55 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 0, 1 ]
+"values": [ 1, 2, 1, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../computer_screen:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../righthand:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.408375, 0.922143, -0.435435 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../lefthand:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../righthand:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -154,10 +410,47 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 18, 19 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../lefthand:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../lefthand:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../righthand:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "themtube"
-length = 0.001
+length = 0.4
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -169,6 +462,66 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ 4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../computer_screen:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../lefthand:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../righthand:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../righthand:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../righthand:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
 }
 
 [node name="Spatial" type="Spatial"]
@@ -343,11 +696,13 @@ anims/stare = SubResource( 10 )
 anims/themtube = SubResource( 8 )
 
 [node name="righthand" type="Sprite3D" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.70695, 1.05385, -0.714516 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, -0.408375, 0.922143, -0.435435 )
+visible = false
 offset = Vector2( 250, 100 )
 billboard = 1
 double_sided = false
 texture = ExtResource( 8 )
+hframes = 2
 vframes = 2
 
 [node name="lefthand" type="Sprite3D" parent="."]
@@ -364,8 +719,31 @@ transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 
 mesh = ExtResource( 6 )
 material/0 = null
 
+[node name="paper" type="Sprite3D" parent="."]
+transform = Transform( -0.043182, -0.111961, -4.89398e-09, 0, -5.24537e-09, 0.12, -0.111961, 0.043182, 1.88755e-09, -0.634986, 0.804065, -0.362271 )
+texture = ExtResource( 10 )
+
+[node name="computer_keyboard" type="Sprite3D" parent="."]
+transform = Transform( 0.0684344, -0.072916, -3.18726e-09, 0, -4.37114e-09, 0.1, -0.072916, -0.0684344, -2.99136e-09, -1.01876, 0.801673, -1.10923 )
+double_sided = false
+texture = ExtResource( 12 )
+
 [node name="Table" type="MeshInstance" parent="."]
 transform = Transform( -2.62268e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.62268e-08, -0.851621, 0.37444, -0.396729 )
 mesh = ExtResource( 7 )
 material/0 = null
 material/1 = null
+
+[node name="computer_screen" type="Sprite3D" parent="."]
+transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.17208, 1.12532, -1.28423 )
+texture = ExtResource( 11 )
+hframes = 2
+vframes = 2
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( -8.65485e-09, -0.198, -7.86805e-09, 0, -8.65485e-09, 0.18, -0.198, 8.65485e-09, 3.43923e-16, -0.497272, 0.80164, -2.38514 )
+visible = false
+offset = Vector2( -1000, 200 )
+double_sided = false
+alpha_cut = 2
+texture = ExtResource( 13 )
