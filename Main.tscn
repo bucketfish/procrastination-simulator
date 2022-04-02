@@ -638,7 +638,7 @@ transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0
 fov = 31.3
 
 [node name="Character" type="Sprite3D" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.249332, 1.35341, -0.57164 )
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0866006, 1.35341, -0.57164 )
 billboard = 1
 shaded = true
 double_sided = false
@@ -690,6 +690,7 @@ transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.068434
 axis = 1
 shaded = true
 double_sided = false
+alpha_cut = 1
 texture = ExtResource( 12 )
 
 [node name="computer_screen" type="Sprite3D" parent="."]
