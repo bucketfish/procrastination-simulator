@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://other_resources/action_button.tscn" type="PackedScene" id=15]
 [ext_resource path="res://textures/clock/minute.png" type="Texture" id=16]
 [ext_resource path="res://textures/clock/hour.png" type="Texture" id=17]
+[ext_resource path="res://textures/ui/bubble.png" type="Texture" id=18]
+[ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=19]
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -584,6 +586,13 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="ViewportTexture" id=17]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="DynamicFont" id=18]
+size = 64
+font_data = ExtResource( 19 )
+
 [node name="main" type="Spatial"]
 script = ExtResource( 14 )
 
@@ -762,5 +771,40 @@ texture = ExtResource( 17 )
 [node name="minute" type="Sprite3D" parent="clock"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.00999999 )
 texture = ExtResource( 16 )
+
+[node name="text" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512684, 2.19619, 0 )
+
+[node name="Sprite3D" type="Sprite3D" parent="text"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.890508, -0.344956, -0.932161 )
+modulate = Color( 0.996078, 0.996078, 0.980392, 1 )
+billboard = 1
+double_sided = false
+texture = SubResource( 17 )
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1000, 600 )
+transparent_bg = true
+render_target_v_flip = true
+
+[node name="Bubble" type="Sprite" parent="Viewport"]
+scale = Vector2( 0.7, 0.7 )
+texture = ExtResource( 18 )
+centered = false
+
+[node name="Label" type="Label" parent="Viewport"]
+margin_left = 108.0
+margin_top = 110.0
+margin_right = 547.0
+margin_bottom = 306.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 18 )
+text = "YAS YAS"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]

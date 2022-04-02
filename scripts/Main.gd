@@ -17,6 +17,10 @@ onready var clock_hour = $clock/hour
 
 onready var parent_anim = $AnimationPlayer
 
+onready var text_bubble = $text/Sprite3D
+onready var text_bubble_sprite = $Viewport/Bubble
+onready var text_bubble_label = $Viewport/Label
+
 
 var data_file
 var actions_json
@@ -47,6 +51,8 @@ func _ready():
 func start_game():
 	# button selection
 	buttons.draw_buttons()
+	
+	text_bubble.visible = false
 	
 	# prep timer
 	game_timer.wait_time = gametime
@@ -101,13 +107,22 @@ func _on_game_timer_timeout():
 	gametimecount += 1;
 	buttons.hide_buttons()
 	
+	text_bubble.visible = true
+	
 	if doingaction:
+		
+		text_bubble_sprite.modulate = "#D23842"
+		text_bubble_label.text = "WHY YOU NO DO WORK!!"
 		parent_anim.play("door_open_bad")
 		stop_action()
 	else:
+		
+		text_bubble_sprite.modulate = "#fefefa"
+		text_bubble_label.text = "good!"
 		parent_anim.play("door_open")
 		
 	yield(parent_anim, "animation_finished")
+	text_bubble.visible = false
 	buttons.draw_buttons()
 	
 func go_fast(value):
