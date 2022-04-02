@@ -1,5 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
+[ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
 [ext_resource path="res://textures/player/spritesheet.png" type="Texture" id=5]
@@ -650,3 +651,8 @@ offset = Vector2( -1000, 200 )
 double_sided = false
 alpha_cut = 2
 texture = ExtResource( 13 )
+
+[node name="door" type="Sprite3D" parent="."]
+transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, 0, -1.09278e-08, -0.2, -8.74228e-09, 1.43351, 1.17752, 0.184098 )
+offset = Vector2( 0, 300 )
+texture = ExtResource( 1 )
