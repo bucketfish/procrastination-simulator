@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=1]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/Buttons.gd" type="Script" id=3]
+[ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -132,6 +133,44 @@ text = "Check Disjoint"
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HomeWorkBar" type="ProgressBar" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1435.0
+margin_top = -16.0
+margin_right = -407.0
+margin_bottom = 16.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 512, 16 )
+theme = ExtResource( 4 )
+step = 0.1
+value = 23.5
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActivityProgress" type="ProgressBar" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 411.0
+margin_top = -16.0
+margin_right = 1439.0
+margin_bottom = 16.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 512, 16 )
+theme = ExtResource( 4 )
+step = 0.1
+value = 7.4
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
