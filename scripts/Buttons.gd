@@ -32,3 +32,5 @@ func draw_buttons():
 	
 	visible = true
 	
+func hide_buttons():
+	visible = false

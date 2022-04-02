@@ -15,14 +15,21 @@ onready var actionbar = $CanvasLayer/ActivityProgress
 onready var clock_min = $clock/minute
 onready var clock_hour = $clock/hour
 
+onready var parent_anim = $AnimationPlayer
+
+
 var data_file
 var actions_json
 var actions
 
 var homeworktime = 30
-var gametime = 60
+var gametime = 10 # how often parent comes in
+var gametimemax = 6 # how many times until game over
+var gametimecount = 0
 
-var curactiontime
+var doingaction = false
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var file = File.new()
@@ -35,7 +42,8 @@ func _ready():
 	# tutorial? menu? first
 	
 	start_game()
-	
+
+
 func start_game():
 	# button selection
 	buttons.draw_buttons()
@@ -52,31 +60,56 @@ func start_game():
 	# prep clock
 	clock_hour.rotation_degrees.z = 30
 	clock_min.rotation_degrees.z = -180
-	
 
 
 func do_action(actionname):
-	print(actionname)
-	buttons.visible = false
+	# well, do the action
+	# set up action doing and timer
+	buttons.hide_buttons()
 	action_timer.wait_time = actions[actionname].time
 	actionbar.max_value = actions[actionname].time
 	char_anim.play(actionname)
 	
+	doingaction = true
 	action_timer.start()
 	homework_timer.paused = true
 	
 	yield(action_timer, "timeout")
-	homework_timer.paused = false
+	stop_action()
+	
+func stop_action():
+	# prevent stoppping it twice or something
+	if doingaction:
+		homework_timer.paused = false
+		doingaction = false
 
-	char_anim.play("idle")
-	buttons.draw_buttons()
+		char_anim.play("idle")
+		buttons.draw_buttons()
 
 
 func _process(delta):
 	homeworkbar.value = homeworkbar.max_value - homework_timer.time_left
 	actionbar.value = actionbar.max_value - action_timer.time_left
 	
-	clock_min.rotation_degrees.z = -180 + 360 * (game_timer.time_left / gametime)
+	clock_min.rotation_degrees.z = -180 + 360 * -((gametime * gametimecount + (gametime - game_timer.time_left)) / (gametime * gametimemax)) # sorry for this kinda convoluted equation i don't know how it got here but hey it works ?? ?? 
 	
+
+
+func _on_game_timer_timeout():
+	# every time the parent comes in
 	
+	gametimecount += 1;
 	
+	if doingaction:
+		parent_anim.play("door_open_bad")
+		stop_action()
+	else:
+		parent_anim.play("door_open")
+	
+func go_fast(value):
+	if value:
+		buttons.hide_buttons()
+		Engine.time_scale = 2
+	else:
+		buttons.draw_buttons()
+		Engine.time_scale = 1.0
