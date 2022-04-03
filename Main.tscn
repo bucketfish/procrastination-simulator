@@ -115,7 +115,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
+tracks/2/path = NodePath("../righthand:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -123,11 +123,11 @@ tracks/2/enabled = true
 tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ Vector3( -0.408375, 0.922143, -0.435435 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../righthand:translation")
+tracks/3/path = NodePath("../lefthand:translation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -136,10 +136,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( -0.408375, 0.922143, -0.435435 ) ]
+"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../lefthand:translation")
+tracks/4/path = NodePath("../righthand:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -148,10 +148,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
+"values": [ false ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../righthand:visible")
+tracks/5/path = NodePath("../lefthand:rotation_degrees")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -160,27 +160,15 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("../lefthand:rotation_degrees")
+tracks/6/path = NodePath("../../TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("../../TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -929,7 +917,6 @@ __meta__ = {
 [node name="MenuLayer" type="CanvasLayer" parent="."]
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
-visible = false
 
 [node name="GameObjects" type="Spatial" parent="."]
 

@@ -21,6 +21,8 @@ onready var text_bubble = $MumTalkSprite
 onready var text_bubble_sprite = $MumTalkViewport/Bubble
 onready var text_bubble_label = $MumTalkViewport/Label
 
+onready var play_button = $MenuLayer/Menu/Play
+
 
 var data_file
 var actions_json
@@ -42,12 +44,9 @@ func _ready():
 	file.close()
 	actions_json = JSON.parse(data_file)
 	actions = actions_json.result
-	
+	play_button.connect("pressed", self, "_on_Play_pressed")
 	# tutorial? menu? first
 	
-	start_game()
-
-
 func start_game():
 	# button selection
 	buttons.draw_buttons()
@@ -67,6 +66,8 @@ func start_game():
 	clock_hour.rotation_degrees.z = 30
 	clock_min.rotation_degrees.z = -180
 
+func _on_Play_pressed():
+	start_game()
 
 func do_action(actionname):
 	# well, do the action
