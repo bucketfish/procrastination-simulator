@@ -67,7 +67,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=12]
 resource_name = "door_open"
-length = 1.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("RoomGroup/DoorGroup/door:rotation_degrees")
 tracks/0/interp = 1
@@ -75,7 +74,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 1.2, 1.4 ),
+"times": PoolRealArray( 0, 0.2, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
@@ -95,7 +94,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=13]
 resource_name = "door_open_bad"
-length = 6.0
+length = 5.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("RoomGroup/DoorGroup/door:rotation_degrees")
 tracks/0/interp = 1
@@ -103,7 +102,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 5.8, 6 ),
+"times": PoolRealArray( 0, 0.2, 5.3, 5.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
@@ -115,7 +114,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 6 ),
+"times": PoolRealArray( 0, 5.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [ true ],
