@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/writing.wav-c85bd9ae07f2e8c33c87522b2d566b09.sample"
+
+[deps]
+
+source_file="res://assets/sfx/writing.wav"
+dest_files=[ "res://.import/writing.wav-c85bd9ae07f2e8c33c87522b2d566b09.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

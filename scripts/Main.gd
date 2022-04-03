@@ -30,7 +30,7 @@ onready var losescreen = $end/lose
 onready var menu = $MenuLayer/Menu
 
 
-onready var sounds = [$Audio/disjoint, $Audio/outside, $Audio/snack, $Audio/hydrate, $Audio/themtube]
+onready var sounds = [$Audio/disjoint, $Audio/outside, $Audio/snack, $Audio/hydrate, $Audio/themtube, $Audio/idle]
 
 var data_file
 var actions_json
@@ -81,6 +81,8 @@ func start_game():
 	get_tree().paused = false
 	game_timer.start()
 	homework_timer.start()
+	$Audio/idle.playing = true
+	char_anim.play("idle")
 	
 
 func _on_Play_pressed():
@@ -117,11 +119,13 @@ func stop_action():
 	for i in sounds:
 		i.playing = false
 	# prevent stoppping it twice or something
+	$Audio/idle.playing = true
 	if doingaction:
 		homework_timer.paused = false
 		doingaction = false
 
 		char_anim.play("idle")
+		
 		buttons.draw_buttons()
 
 
