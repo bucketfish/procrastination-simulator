@@ -770,13 +770,14 @@ texture = ExtResource( 38 )
 [node name="OnTableGroup" type="Spatial" parent="RoomGroup/TableGroup"]
 
 [node name="paper" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup"]
-transform = Transform( -0.043182, 0, 0.111961, 0, 0.12, 0, -0.111961, 0, -0.043182, -0.634986, 0.804065, -0.362271 )
+transform = Transform( -0.043182, 0, 0.111961, 0, 0.12, 0, -0.111961, 0, -0.043182, -0.634986, 0.760603, -0.362271 )
 axis = 1
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 10 )
 
 [node name="LaptopGroup" type="Spatial" parent="RoomGroup/TableGroup/OnTableGroup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.046994, 0 )
 
 [node name="computer_keyboard" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup/LaptopGroup"]
 transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.01876, 0.801673, -1.10923 )
@@ -1032,27 +1033,26 @@ doppler_tracking = 1
 [node name="door" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44414, 1.40567, -0.255935 )
 stream = ExtResource( 32 )
-unit_db = 28.718
+unit_db = 30.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="outside" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35586, 1.50567, -1.85594 )
 stream = ExtResource( 31 )
-unit_db = 80.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="snack" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25586, 1.20567, -0.155935 )
 stream = ExtResource( 29 )
+unit_db = 10.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="hydrate" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15586, 1.00567, -0.055935 )
 stream = ExtResource( 30 )
-unit_db = 63.089
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
