@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -33,6 +33,8 @@
 [ext_resource path="res://assets/sfx/bird.wav" type="AudioStream" id=31]
 [ext_resource path="res://assets/sfx/door.wav" type="AudioStream" id=32]
 [ext_resource path="res://assets/sfx/ThemTube.wav" type="AudioStream" id=33]
+[ext_resource path="res://scenes/lose.tscn" type="PackedScene" id=34]
+[ext_resource path="res://scenes/win.tscn" type="PackedScene" id=35]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -679,9 +681,11 @@ scale_random = 0.75
 size = Vector2( 0.1, 0.1 )
 
 [node name="Main" type="Spatial"]
+pause_mode = 2
 script = ExtResource( 14 )
 
 [node name="RoomGroup" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="Room" type="MeshInstance" parent="RoomGroup"]
 transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
@@ -826,6 +830,7 @@ transform = Transform( 0.05, -0.0866025, 0, 0.0866025, 0.05, 0, 0, 0, 0.1, 0, 0,
 texture = ExtResource( 21 )
 
 [node name="Lighting" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="OmniLight" type="OmniLight" parent="Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.483, 2.019 )
@@ -842,6 +847,7 @@ spot_range = 0.929349
 spot_angle = 52.272
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+pause_mode = 1
 
 [node name="Buttons" type="Control" parent="GUILayer"]
 margin_right = 1920.0
@@ -932,6 +938,7 @@ __meta__ = {
 }
 
 [node name="Audio" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="disjoint" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
@@ -973,11 +980,13 @@ attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="Camera" type="Camera" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0, 1.47345, 4.255 )
 doppler_tracking = 1
 fov = 31.3
 
 [node name="MumTalkSprite" type="Sprite3D" parent="."]
+pause_mode = 1
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.377824, 1.85123, -0.932161 )
 modulate = Color( 0.996078, 0.996078, 0.980392, 1 )
 billboard = 1
@@ -985,6 +994,7 @@ double_sided = false
 texture = SubResource( 17 )
 
 [node name="MumTalkViewport" type="Viewport" parent="."]
+pause_mode = 1
 size = Vector2( 1000, 600 )
 transparent_bg = true
 render_target_v_flip = true
@@ -1010,10 +1020,12 @@ __meta__ = {
 }
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
 
 [node name="TutorialLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="Tutorial" type="Control" parent="TutorialLayer"]
 anchor_right = 1.0
@@ -1111,20 +1123,26 @@ __meta__ = {
 }
 
 [node name="GameObjects" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="action_timer" type="Timer" parent="GameObjects"]
+pause_mode = 1
 one_shot = true
 
 [node name="homework_timer" type="Timer" parent="GameObjects"]
+pause_mode = 1
 wait_time = 30.0
 one_shot = true
 
 [node name="game_timer" type="Timer" parent="GameObjects"]
+pause_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameObjects"]
+pause_mode = 1
 environment = ExtResource( 7 )
 
 [node name="Particles" type="Particles" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47154, 3.5054, -6.00664 )
 material_override = SubResource( 25 )
 cast_shadow = 0
@@ -1136,6 +1154,7 @@ process_material = SubResource( 23 )
 draw_pass_1 = SubResource( 24 )
 
 [node name="RainPlayer" type="AudioStreamPlayer3D" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0188, -1.46046 )
 stream = ExtResource( 25 )
 autoplay = true
@@ -1145,13 +1164,26 @@ doppler_tracking = 1
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )
 
+[node name="end" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="lose" parent="end" instance=ExtResource( 34 )]
+visible = false
+
+[node name="win" parent="end" instance=ExtResource( 35 )]
+visible = false
+
 [connection signal="pressed" from="GUILayer/Buttons/ActionButtonLeft" to="GUILayer/Buttons/ActionButtonLeft" method="_on_ActionButtonCenter_pressed"]
 [connection signal="pressed" from="GUILayer/Buttons/ActionButtonCenter" to="GUILayer/Buttons/ActionButtonCenter" method="_on_ActionButtonCenter_pressed"]
 [connection signal="pressed" from="GUILayer/Buttons/ActionButtonRight" to="GUILayer/Buttons/ActionButtonRight" method="_on_ActionButtonCenter_pressed"]
 [connection signal="pressed" from="TutorialLayer/Tutorial/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="timeout" from="GameObjects/homework_timer" to="." method="_on_homework_timer_timeout"]
 [connection signal="timeout" from="GameObjects/game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="pressed" from="end/lose/back" to="." method="setup_menu"]
+[connection signal="pressed" from="end/win/back" to="." method="setup_menu"]
 
 [editable path="MenuLayer/Menu"]
 [editable path="MenuLayer/Menu/Play"]
 [editable path="MenuLayer/Menu/Quit"]
+[editable path="end/lose"]
+[editable path="end/win"]

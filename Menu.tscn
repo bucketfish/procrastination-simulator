@@ -1,9 +1,87 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://other_resources/action_button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=2]
 [ext_resource path="res://scripts/Menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=4]
+[ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/player/writehand0000.png" type="Texture" id=6]
+[ext_resource path="res://assets/player/player0002.png" type="Texture" id=7]
+[ext_resource path="res://textures/screens/lose/paper.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 5 )
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1586, 485 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Paper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 32, 552 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "animate"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1586, 485 ), Vector2( 1586, 565 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Paper:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32, 552 ), Vector2( 32, 576 ) ]
+}
+
+[sub_resource type="DynamicFont" id=5]
+size = 200
+outline_size = 15
+outline_color = Color( 0.545098, 0.713726, 0.580392, 1 )
+font_data = ExtResource( 5 )
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
@@ -21,50 +99,93 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Paper" type="Sprite" parent="."]
+position = Vector2( 32, 552 )
+texture = ExtResource( 8 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.976471, 0.831373, 0.733333, 0.847059 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Play" parent="." instance=ExtResource( 1 )]
 self_modulate = Color( 0.545098, 0.713726, 0.580392, 1 )
-margin_left = -368.0
-margin_top = -88.0
-margin_right = -112.0
-margin_bottom = 168.0
+margin_left = -589.0
+margin_top = 96.0
+margin_right = -333.0
+margin_bottom = 352.0
 script = null
 
 [node name="ActionButtonLabel" parent="Play" index="0"]
-text = "Play"
+custom_fonts/font = SubResource( 1 )
+text = "play"
 
 [node name="Quit" parent="." instance=ExtResource( 1 )]
 self_modulate = Color( 0.823529, 0.219608, 0.258824, 1 )
-margin_left = 112.0
-margin_top = -88.0
-margin_right = 368.0
-margin_bottom = 168.0
+margin_left = -109.0
+margin_top = 96.0
+margin_right = 147.0
+margin_bottom = 352.0
 script = null
 
 [node name="ActionButtonLabel" parent="Quit" index="0"]
-text = "Quit"
+custom_fonts/font = SubResource( 2 )
+text = "quit"
 
 [node name="PostProcSwitch" type="CheckButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 32.0
 margin_top = -136.0
-margin_right = 376.0
-margin_bottom = -64.0
+margin_right = 531.0
 theme = ExtResource( 2 )
 custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover_pressed = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 shortcut_in_tooltip = false
 pressed = true
-text = "Post Processing"
+text = "post processing"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "animate"
+anims/RESET = SubResource( 6 )
+anims/animate = SubResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 52.0
+margin_top = 182.0
+margin_right = 1415.0
+margin_bottom = 612.0
+custom_constants/line_spacing = -50
+custom_fonts/font = SubResource( 5 )
+text = "procrastination simulator"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 1586, 485 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="Player0002" type="Sprite" parent="Node2D"]
+texture = ExtResource( 7 )
+
+[node name="Writehand0000" type="Sprite" parent="Node2D"]
+texture = ExtResource( 6 )
 
 [connection signal="pressed" from="Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_Quit_pressed"]

@@ -25,6 +25,9 @@ onready var play_button = $MenuLayer/Menu/Play
 
 
 onready var tutorial = $TutorialLayer/Tutorial
+onready var winscreen = $end/win
+onready var losescreen = $end/lose
+onready var menu = $MenuLayer/Menu
 
 
 onready var sounds = [$Audio/disjoint, $Audio/outside, $Audio/snack, $Audio/hydrate, $Audio/themtube]
@@ -50,8 +53,10 @@ func _ready():
 	actions_json = JSON.parse(data_file)
 	actions = actions_json.result
 	play_button.connect("pressed", self, "_on_Play_pressed")
-	# tutorial? menu? first
+	setup_menu()
 	
+func setup_menu():
+	menu.visible = true
 	tutorial.visible = false
 	game_timer.wait_time = gametime
 	text_bubble.visible = false
@@ -59,10 +64,15 @@ func _ready():
 	homeworkbar.max_value = homeworktime
 	clock_hour.rotation_degrees.z = 30
 	clock_min.rotation_degrees.z = -180
+	winscreen.visible = false
+	losescreen.visible = false
+	
+	get_tree().paused = true
 	
 	
 func start_game():
 	# start timer
+	get_tree().paused = false
 	game_timer.start()
 	homework_timer.start()
 	
@@ -156,11 +166,11 @@ func go_fast(value):
 		
 func end_game(val):
 	# stop everything
-	
+	get_tree().paused = true
 	if val: # if ya winning
-		$GUILayer/win.visible = true
+		winscreen.visible = true
 	else: # lost the game
-		$GUILayer/lose.visible = true
+		losescreen.visible = true
 
 func play_sound(id:String, play:bool):
 	get_node("Audio/" + id).playing = play
