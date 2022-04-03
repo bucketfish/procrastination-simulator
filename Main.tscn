@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -643,6 +643,38 @@ tracks/5/keys = {
 "values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
 }
 
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "animate"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.05, 0 ) ]
+}
+
 [sub_resource type="DynamicFont" id=19]
 size = 100
 font_data = ExtResource( 19 )
@@ -764,6 +796,11 @@ anims/idle = SubResource( 6 )
 anims/outside = SubResource( 10 )
 anims/snack = SubResource( 5 )
 anims/themtube = SubResource( 8 )
+
+[node name="float" type="AnimationPlayer" parent="RoomGroup/CharacterGroup/Character"]
+autoplay = "animate"
+anims/RESET = SubResource( 26 )
+anims/animate = SubResource( 27 )
 
 [node name="righthand" type="Sprite3D" parent="RoomGroup/CharacterGroup"]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, -0.408375, 0.922143, -0.435435 )
