@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://textures/ui/bubble.png" type="Texture" id=18]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=19]
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=20]
+[ext_resource path="res://textures/clock/clock_marker.png" type="Texture" id=21]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -755,6 +756,33 @@ texture = ExtResource( 17 )
 [node name="minute" type="Sprite3D" parent="RoomGroup/ClockGroup"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.00999999 )
 texture = ExtResource( 16 )
+
+[node name="markers" type="Spatial" parent="RoomGroup/ClockGroup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.03 )
+
+[node name="1" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 21 )
+
+[node name="2" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
+transform = Transform( 0.05, 0.0866025, 0, -0.0866025, 0.05, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 21 )
+
+[node name="3" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
+transform = Transform( -0.05, 0.0866025, 0, -0.0866025, -0.05, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 21 )
+
+[node name="4" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
+transform = Transform( -0.1, 8.74228e-09, 0, -8.74228e-09, -0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 21 )
+
+[node name="5" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
+transform = Transform( -0.05, -0.0866025, 0, 0.0866025, -0.05, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 21 )
+
+[node name="6" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
+transform = Transform( 0.05, -0.0866025, 0, 0.0866025, 0.05, 0, 0, 0, 0.1, 0, 0, 0 )
+texture = ExtResource( 21 )
 
 [node name="Lighting" type="Spatial" parent="."]
 
