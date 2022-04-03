@@ -1,25 +1,25 @@
 extends Spatial
 
 
-onready var character = $Character
-onready var char_anim = $Character/AnimationPlayer
+onready var character = $RoomGroup/CharacterGroup/Character
+onready var char_anim = $RoomGroup/CharacterGroup/Character/AnimationPlayer
 
-onready var buttons = $CanvasLayer/Buttons
-onready var game_timer = $game_timer
-onready var homework_timer = $homework_timer
-onready var action_timer = $action_timer
+onready var buttons = $GUILayer/Buttons
+onready var game_timer = $GameObjects/game_timer
+onready var homework_timer = $GameObjects/homework_timer
+onready var action_timer = $GameObjects/action_timer
 
-onready var homeworkbar = $CanvasLayer/HomeWorkBar
-onready var actionbar = $CanvasLayer/ActivityProgress
+onready var homeworkbar = $GUILayer/HomeWorkBar
+onready var actionbar = $GUILayer/ActivityProgress
 
-onready var clock_min = $clock/minute
-onready var clock_hour = $clock/hour
+onready var clock_min = $RoomGroup/ClockGroup/minute
+onready var clock_hour = $RoomGroup/ClockGroup/hour
 
-onready var parent_anim = $AnimationPlayer
+onready var parent_anim = $RoomGroup/DoorGroup/DoorOpenPlayer
 
-onready var text_bubble = $text/Sprite3D
-onready var text_bubble_sprite = $Viewport/Bubble
-onready var text_bubble_label = $Viewport/Label
+onready var text_bubble = $MumTalkSprite
+onready var text_bubble_sprite = $MumTalkViewport/Bubble
+onready var text_bubble_label = $MumTalkViewport/Label
 
 
 var data_file
@@ -143,9 +143,9 @@ func end_game(val):
 	# stop everything
 	
 	if val: # if ya winning
-		$CanvasLayer/win.visible = true
+		$GUILayer/win.visible = true
 	else: # lost the game
-		$CanvasLayer/lose.visible = true
+		$GUILayer/lose.visible = true
 
 
 

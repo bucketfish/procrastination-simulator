@@ -4,11 +4,8 @@ var data_file
 onready var action_left = $ActionButtonLeft
 onready var action_center = $ActionButtonCenter
 onready var action_right = $ActionButtonRight
-onready var main = get_node("/root/main")
+onready var main = get_node("/root/Main")
 
-func _ready():
-	pass
-	
 
 func choose_random():
 	
