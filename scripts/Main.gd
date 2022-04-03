@@ -24,6 +24,8 @@ onready var text_bubble_label = $MumTalkViewport/Label
 onready var play_button = $MenuLayer/Menu/Play
 
 
+onready var tutorial = $TutorialLayer/Tutorial
+
 var data_file
 var actions_json
 var actions
@@ -47,27 +49,32 @@ func _ready():
 	play_button.connect("pressed", self, "_on_Play_pressed")
 	# tutorial? menu? first
 	
-func start_game():
-	# button selection
-	buttons.draw_buttons()
-	
-	text_bubble.visible = false
-	
-	# prep timer
+	tutorial.visible = false
 	game_timer.wait_time = gametime
-	game_timer.start()
-	
+	text_bubble.visible = false
 	homework_timer.wait_time = homeworktime
-	homework_timer.start()
-	
 	homeworkbar.max_value = homeworktime
-	
-	# prep clock
 	clock_hour.rotation_degrees.z = 30
 	clock_min.rotation_degrees.z = -180
+	
+	
+func start_game():
+	# start timer
+	game_timer.start()
+	homework_timer.start()
+	
 
 func _on_Play_pressed():
+	show_tutorial()
+	
+func show_tutorial():
+	buttons.draw_buttons()
+	tutorial.visible = true
+	
+func _on_TutorialButton_pressed():
+	tutorial.visible = false
 	start_game()
+
 
 func do_action(actionname):
 	# well, do the action
@@ -152,3 +159,4 @@ func end_game(val):
 
 func _on_homework_timer_timeout():
 	end_game(false)
+

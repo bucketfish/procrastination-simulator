@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -21,6 +21,9 @@
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=19]
 [ext_resource path="res://Menu.tscn" type="PackedScene" id=20]
 [ext_resource path="res://textures/clock/clock_marker.png" type="Texture" id=21]
+[ext_resource path="res://textures/ui/tutorial.png" type="Texture" id=22]
+[ext_resource path="res://textures/ui/blob.png" type="Texture" id=23]
+[ext_resource path="res://textures/ui/blob_clicked.png" type="Texture" id=24]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -604,6 +607,10 @@ viewport_path = NodePath("Viewport")
 size = 64
 font_data = ExtResource( 19 )
 
+[sub_resource type="DynamicFont" id=22]
+size = 48
+font_data = ExtResource( 19 )
+
 [sub_resource type="PanoramaSky" id=20]
 panorama = ExtResource( 7 )
 
@@ -918,6 +925,103 @@ __meta__ = {
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
 
+[node name="TutorialLayer" type="CanvasLayer" parent="."]
+
+[node name="Tutorial" type="Control" parent="TutorialLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="TutorialLayer/Tutorial"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.239216, 0.156863, 0.141176, 0.482353 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tutorial" type="Sprite" parent="TutorialLayer/Tutorial"]
+position = Vector2( 931, 530.5 )
+scale = Vector2( 1.01399, 1.0125 )
+texture = ExtResource( 22 )
+
+[node name="hwprogtext" type="Label" parent="TutorialLayer/Tutorial"]
+margin_left = 102.0
+margin_top = 349.0
+margin_right = 519.0
+margin_bottom = 594.0
+custom_fonts/font = SubResource( 22 )
+text = "1. this is your homework progress! make sure it doens't reach the bottom."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="doactionstext" type="Label" parent="TutorialLayer/Tutorial"]
+margin_left = 441.0
+margin_top = 679.0
+margin_right = 858.0
+margin_bottom = 924.0
+custom_fonts/font = SubResource( 22 )
+text = "2. do tasks to procrastinate doing homework."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="actionprogtext" type="Label" parent="TutorialLayer/Tutorial"]
+margin_left = 1269.0
+margin_top = 276.0
+margin_right = 1823.0
+margin_bottom = 521.0
+custom_fonts/font = SubResource( 22 )
+text = "3. this bar shows how long more your current procrastination task takes."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="clocktext" type="Label" parent="TutorialLayer/Tutorial"]
+margin_left = 1023.0
+margin_top = 851.0
+margin_right = 1730.0
+margin_bottom = 1096.0
+custom_fonts/font = SubResource( 22 )
+text = "4. your parents come in to check on your every 10 minutes. make sure you aren't caught procrastinating!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialButton" type="TextureButton" parent="TutorialLayer/Tutorial"]
+self_modulate = Color( 0.945098, 0.937255, 0.756863, 1 )
+margin_left = 125.0
+margin_top = 775.0
+margin_right = 381.0
+margin_bottom = 1031.0
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
+
+[node name="buttontext" type="Label" parent="TutorialLayer/Tutorial/TutorialButton"]
+margin_left = -146.0
+margin_top = 100.0
+margin_right = 408.0
+margin_bottom = 345.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 22 )
+text = "let's go!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameObjects" type="Spatial" parent="."]
 
 [node name="action_timer" type="Timer" parent="GameObjects"]
@@ -932,5 +1036,10 @@ one_shot = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameObjects"]
 environment = SubResource( 21 )
 
+[connection signal="pressed" from="TutorialLayer/Tutorial/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="timeout" from="GameObjects/homework_timer" to="." method="_on_homework_timer_timeout"]
 [connection signal="timeout" from="GameObjects/game_timer" to="." method="_on_game_timer_timeout"]
+
+[editable path="MenuLayer/Menu"]
+[editable path="MenuLayer/Menu/Play"]
+[editable path="MenuLayer/Menu/Quit"]
