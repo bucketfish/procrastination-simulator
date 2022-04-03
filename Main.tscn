@@ -722,7 +722,7 @@ script = ExtResource( 14 )
 pause_mode = 1
 
 [node name="Room" type="MeshInstance" parent="RoomGroup"]
-transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
+transform = Transform( -1.57361e-07, 0, -3.2, 0, 2.7, 0, 3.6, 0, -1.39876e-07, 0.131757, 1.35, 0 )
 mesh = ExtResource( 6 )
 skeleton = NodePath("../..")
 material/0 = SubResource( 15 )
@@ -737,7 +737,7 @@ anims/door_open = SubResource( 12 )
 anims/door_open_bad = SubResource( 13 )
 
 [node name="door" type="Sprite3D" parent="RoomGroup/DoorGroup"]
-transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.47412, 1.17752, 0.184098 )
+transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.72834, 1.17752, 0.184098 )
 offset = Vector2( 0, 300 )
 shaded = true
 texture = ExtResource( 1 )
@@ -847,7 +847,7 @@ vframes = 2
 frame = 1
 
 [node name="ClockGroup" type="Spatial" parent="RoomGroup"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.993943, 1.31591, -1.68335 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24978, 1.31591, -1.68335 )
 
 [node name="back" type="Sprite3D" parent="RoomGroup/ClockGroup"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
