@@ -155,7 +155,8 @@ func end_game(val):
 	else: # lost the game
 		$GUILayer/lose.visible = true
 
-
+func play_sound(id):
+	get_node("Audio/" + id)
 
 func _on_homework_timer_timeout():
 	end_game(false)
