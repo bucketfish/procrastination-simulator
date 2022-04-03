@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -19,10 +19,73 @@
 [ext_resource path="res://textures/clock/hour.png" type="Texture" id=17]
 [ext_resource path="res://textures/ui/bubble.png" type="Texture" id=18]
 [ext_resource path="res://other_resources/Vegur-Regular.otf" type="DynamicFontData" id=19]
+[ext_resource path="res://Menu.tscn" type="PackedScene" id=20]
 
-[sub_resource type="DynamicFont" id=19]
-size = 100
-font_data = ExtResource( 19 )
+[sub_resource type="SpatialMaterial" id=15]
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("RoomGroup/DoorGroup/door:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 7.58303e-21, -90, 90 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "door_open"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("RoomGroup/DoorGroup/door:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1.2, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "door_open_bad"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("RoomGroup/DoorGroup/door:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 5.8, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "go_fast"
+}, {
+"args": [ false ],
+"method": "go_fast"
+} ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -51,7 +114,7 @@ tracks/1/keys = {
 "values": [ 0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../computer_screen:frame")
+tracks/2/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -128,7 +191,7 @@ tracks/0/keys = {
 "values": [ 5 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../computer_screen:frame")
+tracks/1/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -242,7 +305,7 @@ tracks/3/keys = {
 "values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("../computer_screen:frame")
+tracks/4/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -284,7 +347,7 @@ tracks/1/keys = {
 "values": [ 1, 2, 1, 2 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../computer_screen:frame")
+tracks/2/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -428,7 +491,7 @@ tracks/2/keys = {
 "values": [ Vector3( -0.414453, 0.878936, -0.168537 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../computer_screen:frame")
+tracks/3/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -457,7 +520,7 @@ tracks/0/keys = {
 "values": [ 4 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../computer_screen:frame")
+tracks/1/path = NodePath("../RoomGroup/TableGroup/OnTableGroup/LaptopGroup/computer_screen:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -517,71 +580,9 @@ tracks/5/keys = {
 "values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
 }
 
-[sub_resource type="SpatialMaterial" id=15]
-
-[sub_resource type="Animation" id=11]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/path = NodePath("door:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 7.58303e-21, -90, 90 ) ]
-}
-
-[sub_resource type="Animation" id=12]
-resource_name = "door_open"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("door:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 1.2, 1.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
-}
-
-[sub_resource type="Animation" id=13]
-resource_name = "door_open_bad"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("door:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 5.8, 6 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [ true ],
-"method": "go_fast"
-}, {
-"args": [ false ],
-"method": "go_fast"
-} ]
-}
+[sub_resource type="DynamicFont" id=19]
+size = 100
+font_data = ExtResource( 19 )
 
 [sub_resource type="ViewportTexture" id=17]
 viewport_path = NodePath("Viewport")
@@ -611,12 +612,145 @@ dof_blur_near_transition = 0.44
 dof_blur_near_amount = 0.08
 dof_blur_near_quality = 2
 
-[node name="main" type="Spatial"]
+[node name="Main" type="Spatial"]
 script = ExtResource( 14 )
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="RoomGroup" type="Spatial" parent="."]
 
-[node name="Buttons" type="Control" parent="CanvasLayer"]
+[node name="Room" type="MeshInstance" parent="RoomGroup"]
+transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
+mesh = ExtResource( 6 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 15 )
+
+[node name="DoorGroup" type="Spatial" parent="RoomGroup"]
+transform = Transform( 1, 5.29395e-23, 3.55271e-15, -7.94094e-23, 1, -3.55271e-15, -3.55271e-15, 1.15703e-29, 1, 1.19209e-07, 0, 0 )
+
+[node name="DoorOpenPlayer" type="AnimationPlayer" parent="RoomGroup/DoorGroup"]
+root_node = NodePath("../../..")
+anims/RESET = SubResource( 11 )
+anims/door_open = SubResource( 12 )
+anims/door_open_bad = SubResource( 13 )
+
+[node name="door" type="Sprite3D" parent="RoomGroup/DoorGroup"]
+transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.47412, 1.17752, 0.184098 )
+offset = Vector2( 0, 300 )
+shaded = true
+texture = ExtResource( 1 )
+
+[node name="TableGroup" type="Spatial" parent="RoomGroup"]
+
+[node name="Table" type="Sprite3D" parent="RoomGroup/TableGroup"]
+transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.895853, 0.737271, -0.436361 )
+axis = 1
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 13 )
+
+[node name="OnTableGroup" type="Spatial" parent="RoomGroup/TableGroup"]
+
+[node name="paper" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup"]
+transform = Transform( -0.043182, 0, 0.111961, 0, 0.12, 0, -0.111961, 0, -0.043182, -0.634986, 0.804065, -0.362271 )
+axis = 1
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 10 )
+
+[node name="LaptopGroup" type="Spatial" parent="RoomGroup/TableGroup/OnTableGroup"]
+
+[node name="computer_keyboard" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup/LaptopGroup"]
+transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.01876, 0.801673, -1.10923 )
+axis = 1
+shaded = true
+double_sided = false
+alpha_cut = 2
+texture = ExtResource( 12 )
+
+[node name="computer_screen" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup/LaptopGroup"]
+transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.17208, 1.12532, -1.28423 )
+shaded = true
+alpha_cut = 2
+texture = ExtResource( 11 )
+hframes = 2
+vframes = 2
+
+[node name="CharacterGroup" type="Spatial" parent="RoomGroup"]
+
+[node name="Character" type="Sprite3D" parent="RoomGroup/CharacterGroup"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0866006, 1.35341, -0.57164 )
+billboard = 1
+shaded = true
+double_sided = false
+texture = ExtResource( 5 )
+hframes = 4
+vframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RoomGroup/CharacterGroup/Character"]
+autoplay = "idle"
+anims/RESET = SubResource( 4 )
+anims/disjoint = SubResource( 7 )
+anims/hydrate = SubResource( 9 )
+anims/idle = SubResource( 6 )
+anims/outside = SubResource( 10 )
+anims/snack = SubResource( 5 )
+anims/themtube = SubResource( 8 )
+
+[node name="righthand" type="Sprite3D" parent="RoomGroup/CharacterGroup"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, -0.408375, 0.922143, -0.435435 )
+visible = false
+offset = Vector2( 250, 100 )
+billboard = 1
+shaded = true
+double_sided = false
+texture = ExtResource( 8 )
+hframes = 2
+vframes = 2
+
+[node name="lefthand" type="Sprite3D" parent="RoomGroup/CharacterGroup"]
+transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.414453, 0.878936, -0.168537 )
+offset = Vector2( 200, 0 )
+billboard = 1
+shaded = true
+double_sided = false
+texture = ExtResource( 9 )
+vframes = 2
+frame = 1
+
+[node name="ClockGroup" type="Spatial" parent="RoomGroup"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.993943, 1.31591, -1.68335 )
+
+[node name="back" type="Sprite3D" parent="RoomGroup/ClockGroup"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
+shaded = true
+texture = ExtResource( 2 )
+
+[node name="hour" type="Sprite3D" parent="RoomGroup/ClockGroup"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.02 )
+texture = ExtResource( 17 )
+
+[node name="minute" type="Sprite3D" parent="RoomGroup/ClockGroup"]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.00999999 )
+texture = ExtResource( 16 )
+
+[node name="Lighting" type="Spatial" parent="."]
+
+[node name="OmniLight" type="OmniLight" parent="Lighting"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.483, 2.019 )
+visible = false
+light_energy = 8.0
+shadow_enabled = true
+omni_range = 4.31507
+
+[node name="LaptopLight" type="SpotLight" parent="Lighting"]
+transform = Transform( -0.770902, 0, -0.636953, 0, 1, 0, 0.636953, 0, -0.770902, -1.33645, 1.07112, -1.45277 )
+light_color = Color( 0.839216, 0.129412, 0.780392, 1 )
+light_energy = 16.0
+spot_range = 0.929349
+spot_angle = 52.272
+
+[node name="GUILayer" type="CanvasLayer" parent="."]
+
+[node name="Buttons" type="Control" parent="GUILayer"]
 margin_right = 1920.0
 margin_bottom = 1080.0
 script = ExtResource( 3 )
@@ -624,25 +758,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActionButtonLeft" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
+[node name="ActionButtonLeft" parent="GUILayer/Buttons" instance=ExtResource( 15 )]
 margin_left = -429.0
 margin_top = -394.0
 margin_right = -173.0
 margin_bottom = -138.0
 
-[node name="ActionButtonCenter" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
+[node name="ActionButtonCenter" parent="GUILayer/Buttons" instance=ExtResource( 15 )]
 margin_left = -83.0
 margin_top = -511.0
 margin_right = 173.0
 margin_bottom = -255.0
 
-[node name="ActionButtonRight" parent="CanvasLayer/Buttons" instance=ExtResource( 15 )]
+[node name="ActionButtonRight" parent="GUILayer/Buttons" instance=ExtResource( 15 )]
 margin_left = 283.0
 margin_top = -420.0
 margin_right = 539.0
 margin_bottom = -164.0
 
-[node name="HomeWorkBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="HomeWorkBar" type="ProgressBar" parent="GUILayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -661,7 +795,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ActivityProgress" type="ProgressBar" parent="CanvasLayer"]
+[node name="ActivityProgress" type="ProgressBar" parent="GUILayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -680,7 +814,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="win" type="Label" parent="CanvasLayer"]
+[node name="win" type="Label" parent="GUILayer"]
 visible = false
 margin_left = 795.0
 margin_top = 579.0
@@ -692,7 +826,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="lose" type="Label" parent="CanvasLayer"]
+[node name="lose" type="Label" parent="GUILayer"]
 visible = false
 margin_left = 795.0
 margin_top = 579.0
@@ -708,131 +842,24 @@ __meta__ = {
 transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0, 1.47345, 4.255 )
 fov = 31.3
 
-[node name="Character" type="Sprite3D" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.0866006, 1.35341, -0.57164 )
-billboard = 1
-shaded = true
-double_sided = false
-texture = ExtResource( 5 )
-hframes = 4
-vframes = 5
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
-autoplay = "idle"
-anims/RESET = SubResource( 4 )
-anims/disjoint = SubResource( 7 )
-anims/hydrate = SubResource( 9 )
-anims/idle = SubResource( 6 )
-anims/outside = SubResource( 10 )
-anims/snack = SubResource( 5 )
-anims/themtube = SubResource( 8 )
-
-[node name="righthand" type="Sprite3D" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, -0.408375, 0.922143, -0.435435 )
-visible = false
-offset = Vector2( 250, 100 )
-billboard = 1
-shaded = true
-double_sided = false
-texture = ExtResource( 8 )
-hframes = 2
-vframes = 2
-
-[node name="lefthand" type="Sprite3D" parent="."]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -0.414453, 0.878936, -0.168537 )
-offset = Vector2( 200, 0 )
-billboard = 1
-shaded = true
-double_sided = false
-texture = ExtResource( 9 )
-vframes = 2
-frame = 1
-
-[node name="Room" type="MeshInstance" parent="."]
-transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
-mesh = ExtResource( 6 )
-material/0 = SubResource( 15 )
-
-[node name="paper" type="Sprite3D" parent="."]
-transform = Transform( -0.043182, 0, 0.111961, 0, 0.12, 0, -0.111961, 0, -0.043182, -0.634986, 0.804065, -0.362271 )
-axis = 1
-shaded = true
-alpha_cut = 2
-texture = ExtResource( 10 )
-
-[node name="computer_keyboard" type="Sprite3D" parent="."]
-transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.01876, 0.801673, -1.10923 )
-axis = 1
-shaded = true
-double_sided = false
-alpha_cut = 2
-texture = ExtResource( 12 )
-
-[node name="computer_screen" type="Sprite3D" parent="."]
-transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.17208, 1.12532, -1.28423 )
-shaded = true
-alpha_cut = 2
-texture = ExtResource( 11 )
-hframes = 2
-vframes = 2
-
-[node name="door" type="Sprite3D" parent="."]
-transform = Transform( 4.77671e-16, 8.74228e-09, -0.2, 0.25, -8.74228e-09, -2.64698e-23, -1.09278e-08, -0.2, -8.74228e-09, 1.47412, 1.17752, 0.184098 )
-offset = Vector2( 0, 300 )
-shaded = true
-texture = ExtResource( 1 )
-
-[node name="action_timer" type="Timer" parent="."]
-one_shot = true
-
-[node name="homework_timer" type="Timer" parent="."]
-wait_time = 30.0
-one_shot = true
-
-[node name="game_timer" type="Timer" parent="."]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 11 )
-anims/door_open = SubResource( 12 )
-anims/door_open_bad = SubResource( 13 )
-
-[node name="clock" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.993943, 1.31591, -1.68335 )
-
-[node name="back" type="Sprite3D" parent="clock"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0 )
-shaded = true
-texture = ExtResource( 2 )
-
-[node name="hour" type="Sprite3D" parent="clock"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.02 )
-texture = ExtResource( 17 )
-
-[node name="minute" type="Sprite3D" parent="clock"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0.00999999 )
-texture = ExtResource( 16 )
-
-[node name="text" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512684, 2.19619, 0 )
-
-[node name="Sprite3D" type="Sprite3D" parent="text"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.890508, -0.344956, -0.932161 )
+[node name="MumTalkSprite" type="Sprite3D" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.377824, 1.85123, -0.932161 )
 modulate = Color( 0.996078, 0.996078, 0.980392, 1 )
 billboard = 1
 double_sided = false
 texture = SubResource( 17 )
 
-[node name="Viewport" type="Viewport" parent="."]
+[node name="MumTalkViewport" type="Viewport" parent="."]
 size = Vector2( 1000, 600 )
 transparent_bg = true
 render_target_v_flip = true
 
-[node name="Bubble" type="Sprite" parent="Viewport"]
+[node name="Bubble" type="Sprite" parent="MumTalkViewport"]
 scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 18 )
 centered = false
 
-[node name="Label" type="Label" parent="Viewport"]
+[node name="Label" type="Label" parent="MumTalkViewport"]
 margin_left = 108.0
 margin_top = 110.0
 margin_right = 547.0
@@ -847,29 +874,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( -8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.895853, 0.737271, -0.436361 )
-axis = 1
-shaded = true
-alpha_cut = 2
-texture = ExtResource( 13 )
+[node name="MenuLayer" type="CanvasLayer" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
+visible = false
+
+[node name="GameObjects" type="Spatial" parent="."]
+
+[node name="action_timer" type="Timer" parent="GameObjects"]
+one_shot = true
+
+[node name="homework_timer" type="Timer" parent="GameObjects"]
+wait_time = 30.0
+one_shot = true
+
+[node name="game_timer" type="Timer" parent="GameObjects"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="GameObjects"]
 environment = SubResource( 21 )
 
-[node name="OmniLight" type="OmniLight" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.483, 2.019 )
-visible = false
-light_energy = 8.0
-shadow_enabled = true
-omni_range = 4.31507
-
-[node name="SpotLight" type="SpotLight" parent="."]
-transform = Transform( -0.770902, 0, -0.636953, 0, 1, 0, 0.636953, 0, -0.770902, -1.33645, 1.07112, -1.45277 )
-light_color = Color( 0.839216, 0.129412, 0.780392, 1 )
-light_energy = 16.0
-spot_range = 0.929349
-spot_angle = 52.272
-
-[connection signal="timeout" from="homework_timer" to="." method="_on_homework_timer_timeout"]
-[connection signal="timeout" from="game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="GameObjects/homework_timer" to="." method="_on_homework_timer_timeout"]
+[connection signal="timeout" from="GameObjects/game_timer" to="." method="_on_game_timer_timeout"]

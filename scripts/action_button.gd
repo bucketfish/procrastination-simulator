@@ -4,7 +4,7 @@ extends TextureButton
 export var action:String
 
 onready var label = $ActionButtonLabel
-onready var main = get_node("/root/main")
+onready var main = get_node("/root/Main")
 
 # Declare member variables here. Examples:
 # var a = 2
