@@ -147,13 +147,13 @@ func _on_game_timer_timeout():
 	
 	if doingaction:
 		text_bubble_sprite.modulate = "#D23842"
-		text_bubble_label.text = "WHY YOU NO DO WORK!!"
+		text_bubble_label.text = "WHY AREN'T YOU WORKING?!"
 		parent_anim.play("door_open_bad")
 		stop_action()
 	else:
 		
 		text_bubble_sprite.modulate = "#fefefa"
-		text_bubble_label.text = "good!"
+		text_bubble_label.text = "Good work!"
 		parent_anim.play("door_open")
 		
 	yield(parent_anim, "animation_finished")
