@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rainraw.wav-5ddc2fbb638fb4c48fc9b4c942a4b949.sample"
+
+[deps]
+
+source_file="res://assets/sfx/rainraw.wav"
+dest_files=[ "res://.import/rainraw.wav-5ddc2fbb638fb4c48fc9b4c942a4b949.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -6,7 +6,7 @@
 [ext_resource path="res://other_resources/Main.tres" type="Theme" id=4]
 [ext_resource path="res://textures/player/spritesheet.png" type="Texture" id=5]
 [ext_resource path="res://assets/3d/room.obj" type="ArrayMesh" id=6]
-[ext_resource path="res://cedar_bridge_2k.exr" type="Texture" id=7]
+[ext_resource path="res://other_resources/PotatoEnvironment.tres" type="Environment" id=7]
 [ext_resource path="res://textures/player/writehand.png" type="Texture" id=8]
 [ext_resource path="res://textures/player/lefthand.png" type="Texture" id=9]
 [ext_resource path="res://textures/things_on_table/paper.png" type="Texture" id=10]
@@ -24,6 +24,7 @@
 [ext_resource path="res://textures/ui/tutorial.png" type="Texture" id=22]
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=23]
 [ext_resource path="res://textures/ui/blob_clicked.png" type="Texture" id=24]
+[ext_resource path="res://assets/sfx/rainraw.wav" type="AudioStream" id=25]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -611,26 +612,13 @@ font_data = ExtResource( 19 )
 size = 48
 font_data = ExtResource( 19 )
 
-[sub_resource type="PanoramaSky" id=20]
-panorama = ExtResource( 7 )
-
-[sub_resource type="Environment" id=21]
-background_mode = 2
-background_sky = SubResource( 20 )
-background_sky_custom_fov = 90.0
-background_sky_orientation = Basis( 0.0174524, 0, -0.999848, 0, 1, 0, 0.999848, 0, 0.0174524 )
-fog_depth_curve = 0.0769466
-tonemap_mode = 2
-tonemap_exposure = 0.6
-tonemap_white = 3.0
-auto_exposure_enabled = true
-ssao_radius = 0.8
-ssao_intensity = 0.8
-ssao_light_affect = 0.5
-dof_blur_near_distance = 4.5
-dof_blur_near_transition = 0.44
-dof_blur_near_amount = 0.08
-dof_blur_near_quality = 2
+[sub_resource type="ParticlesMaterial" id=23]
+emission_shape = 2
+emission_box_extents = Vector3( 0, 2, 0.75 )
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( -4, -4, 0 )
+scale = 2.0
+scale_random = 0.75
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 14 )
@@ -887,6 +875,7 @@ __meta__ = {
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0, 1.47345, 4.255 )
+doppler_tracking = 1
 fov = 31.3
 
 [node name="MumTalkSprite" type="Sprite3D" parent="."]
@@ -1034,7 +1023,21 @@ one_shot = true
 [node name="game_timer" type="Timer" parent="GameObjects"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameObjects"]
-environment = SubResource( 21 )
+environment = ExtResource( 7 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47154, 3.28848, -6.00664 )
+amount = 200
+lifetime = 1.25
+randomness = 0.85
+process_material = SubResource( 23 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0188, -1.46046 )
+stream = ExtResource( 25 )
+autoplay = true
+attenuation_filter_db = -2.0
+doppler_tracking = 1
 
 [connection signal="pressed" from="TutorialLayer/Tutorial/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="timeout" from="GameObjects/homework_timer" to="." method="_on_homework_timer_timeout"]
