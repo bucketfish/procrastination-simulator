@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -38,6 +38,7 @@
 [ext_resource path="res://textures/room/chair_seat.png" type="Texture" id=36]
 [ext_resource path="res://textures/room/chair_back.png" type="Texture" id=37]
 [ext_resource path="res://textures/room/legs.png" type="Texture" id=38]
+[ext_resource path="res://assets/Music/Leaves.wav" type="AudioStream" id=39]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -1050,36 +1051,42 @@ pause_mode = 1
 [node name="disjoint" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
 stream = ExtResource( 28 )
+unit_db = 7.179
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="door" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44414, 1.40567, -0.255935 )
 stream = ExtResource( 32 )
+unit_db = 8.205
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="outside" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35586, 1.50567, -1.85594 )
 stream = ExtResource( 31 )
+unit_db = 7.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="snack" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25586, 1.20567, -0.155935 )
 stream = ExtResource( 29 )
+unit_db = 7.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="hydrate" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15586, 1.00567, -0.055935 )
 stream = ExtResource( 30 )
+unit_db = 8.205
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="themtube" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
 stream = ExtResource( 33 )
+unit_db = 11.282
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
@@ -1127,6 +1134,9 @@ __meta__ = {
 pause_mode = 2
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
+
+[node name="Click" parent="MenuLayer/Menu" index="6"]
+volume_db = -15.0
 
 [node name="TutorialLayer" type="CanvasLayer" parent="."]
 pause_mode = 2
@@ -1267,6 +1277,13 @@ doppler_tracking = 1
 
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )
+volume_db = -15.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 39 )
+volume_db = -14.857
+autoplay = true
 
 [node name="end" type="CanvasLayer" parent="."]
 pause_mode = 2
