@@ -1,13 +1,13 @@
 [gd_resource type="Environment" load_steps=3 format=2]
 
-[ext_resource path="res://cedar_bridge_2k.exr" type="Texture" id=1]
+[ext_resource path="res://cedar_bridge_1k.exr" type="Texture" id=1]
 
-[sub_resource type="PanoramaSky" id=20]
+[sub_resource type="PanoramaSky" id=1]
 panorama = ExtResource( 1 )
 
 [resource]
 background_mode = 2
-background_sky = SubResource( 20 )
+background_sky = SubResource( 1 )
 background_sky_custom_fov = 90.0
 background_sky_orientation = Basis( 0.0174524, 0, -0.999848, 0, 1, 0, 0.999848, 0, 0.0174524 )
 ambient_light_sky_contribution = 0.0
