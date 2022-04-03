@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -35,6 +35,9 @@
 [ext_resource path="res://assets/sfx/ThemTube.wav" type="AudioStream" id=33]
 [ext_resource path="res://scenes/lose.tscn" type="PackedScene" id=34]
 [ext_resource path="res://scenes/win.tscn" type="PackedScene" id=35]
+[ext_resource path="res://textures/room/chair_seat.png" type="Texture" id=36]
+[ext_resource path="res://textures/room/chair_back.png" type="Texture" id=37]
+[ext_resource path="res://textures/room/legs.png" type="Texture" id=38]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -748,6 +751,22 @@ shaded = true
 alpha_cut = 2
 texture = ExtResource( 13 )
 
+[node name="TableLeg1" type="Sprite3D" parent="RoomGroup/TableGroup"]
+transform = Transform( 1.96701e-08, 0.15, 0, -0.15, 1.96701e-08, 0, 0, 0, 0.15, -0.28802, 0.316049, 0.496671 )
+texture = ExtResource( 38 )
+
+[node name="TableLeg2" type="Sprite3D" parent="RoomGroup/TableGroup"]
+transform = Transform( 1.96701e-08, 0.15, 0, -0.15, 1.96701e-08, 0, 0, 0, 0.15, -1.42177, 0.316049, 0.496671 )
+texture = ExtResource( 38 )
+
+[node name="TableLeg3" type="Sprite3D" parent="RoomGroup/TableGroup"]
+transform = Transform( -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 0, 0, 0, 0.15, -1.45917, 0.316049, -1.37159 )
+texture = ExtResource( 38 )
+
+[node name="TableLeg4" type="Sprite3D" parent="RoomGroup/TableGroup"]
+transform = Transform( -6.55671e-09, -0.15, 0, 0.15, -6.55671e-09, 0, 0, 0, 0.15, -0.325412, 0.316049, -1.37159 )
+texture = ExtResource( 38 )
+
 [node name="OnTableGroup" type="Spatial" parent="RoomGroup/TableGroup"]
 
 [node name="paper" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup"]
@@ -864,6 +883,34 @@ texture = ExtResource( 21 )
 [node name="6" type="Sprite3D" parent="RoomGroup/ClockGroup/markers"]
 transform = Transform( 0.05, -0.0866025, 0, 0.0866025, 0.05, 0, 0, 0, 0.1, 0, 0, 0 )
 texture = ExtResource( 21 )
+
+[node name="ChairGroup" type="Spatial" parent="RoomGroup"]
+
+[node name="ChairBottom" type="Sprite3D" parent="RoomGroup/ChairGroup"]
+transform = Transform( 0.147329, 0, 0.0281792, 0, 0.15, 0, -0.0281792, 0, 0.147329, 0.375763, 0.463071, -0.560889 )
+axis = 1
+texture = ExtResource( 36 )
+
+[node name="ChairBack" type="Sprite3D" parent="RoomGroup/ChairGroup"]
+transform = Transform( 0.147329, 0.0281792, -1.23175e-09, 0, -6.55671e-09, -0.15, -0.0281792, 0.147329, -6.43997e-09, 0.522912, 1.14756, -0.584322 )
+axis = 0
+texture = ExtResource( 37 )
+
+[node name="ChairLeg1" type="Sprite3D" parent="RoomGroup/ChairGroup"]
+transform = Transform( 1.93444e-08, 0.147516, 0.0271834, -0.0850842, 1.11574e-08, 0, -3.56468e-09, -0.0271834, 0.147516, -0.2152, 0.23393, 0.0194036 )
+texture = ExtResource( 38 )
+
+[node name="ChairLeg2" type="Sprite3D" parent="RoomGroup/ChairGroup"]
+transform = Transform( 1.93444e-08, 0.147516, 0.0271834, -0.0850842, 1.11574e-08, 0, -3.56468e-09, -0.0271834, 0.147516, 0.558378, 0.23393, -0.130733 )
+texture = ExtResource( 38 )
+
+[node name="ChairLeg3" type="Sprite3D" parent="RoomGroup/ChairGroup"]
+transform = Transform( 1.93444e-08, 0.147516, 0.0271834, -0.0850842, 1.11574e-08, 0, -3.56468e-09, -0.0271834, 0.147516, 0.376412, 0.23393, -0.982879 )
+texture = ExtResource( 38 )
+
+[node name="ChairLeg4" type="Sprite3D" parent="RoomGroup/ChairGroup"]
+transform = Transform( 1.93444e-08, 0.147516, 0.0271834, -0.0850842, 1.11574e-08, 0, -3.56468e-09, -0.0271834, 0.147516, -0.389449, 0.23393, -0.830984 )
+texture = ExtResource( 38 )
 
 [node name="Lighting" type="Spatial" parent="."]
 pause_mode = 1
