@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -31,6 +31,8 @@
 [ext_resource path="res://assets/sfx/eating.wav" type="AudioStream" id=29]
 [ext_resource path="res://assets/sfx/drinking.wav" type="AudioStream" id=30]
 [ext_resource path="res://assets/sfx/bird.wav" type="AudioStream" id=31]
+[ext_resource path="res://assets/sfx/door.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/sfx/ThemTube.wav" type="AudioStream" id=33]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -48,6 +50,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 7.58303e-21, -90, 90 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Audio/door:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "door_open"
@@ -63,6 +77,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Audio/door:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -96,6 +122,18 @@ tracks/1/keys = {
 "args": [ false ],
 "method": "go_fast"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Audio/door:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -901,21 +939,28 @@ stream = ExtResource( 28 )
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
+[node name="door" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44414, 1.40567, -0.255935 )
+stream = ExtResource( 32 )
+unit_db = 28.718
+attenuation_filter_db = -2.0
+doppler_tracking = 1
+
 [node name="outside" type="AudioStreamPlayer3D" parent="Audio"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35586, 1.50567, -1.85594 )
 stream = ExtResource( 31 )
 unit_db = 80.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="snack" type="AudioStreamPlayer3D" parent="Audio"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25586, 1.20567, -0.155935 )
 stream = ExtResource( 29 )
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
 [node name="hydrate" type="AudioStreamPlayer3D" parent="Audio"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15586, 1.00567, -0.055935 )
 stream = ExtResource( 30 )
 unit_db = 63.089
 attenuation_filter_db = -2.0
@@ -923,7 +968,7 @@ doppler_tracking = 1
 
 [node name="themtube" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
-stream = ExtResource( 28 )
+stream = ExtResource( 33 )
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 

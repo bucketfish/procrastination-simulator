@@ -130,7 +130,6 @@ func _on_game_timer_timeout():
 	text_bubble.visible = true
 	
 	if doingaction:
-		
 		text_bubble_sprite.modulate = "#D23842"
 		text_bubble_label.text = "WHY YOU NO DO WORK!!"
 		parent_anim.play("door_open_bad")
