@@ -56,6 +56,12 @@ func _ready():
 	setup_menu()
 	
 func setup_menu():
+	# basically reset everything
+	stop_action()
+	parent_anim.play("RESET")
+	char_anim.play("RESET")
+	gametimecount = 0
+	doingaction = false
 	menu.visible = true
 	tutorial.visible = false
 	game_timer.wait_time = gametime
