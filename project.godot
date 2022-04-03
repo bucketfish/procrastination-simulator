@@ -12,6 +12,9 @@ config_version=4
 
 config/name="Ld 50"
 run/main_scene="res://Main.tscn"
+boot_splash/image="res://publicity/icon.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.92549, 0.721569, 0.647059, 1 )
 config/icon="res://icon.png"
 
 [display]
