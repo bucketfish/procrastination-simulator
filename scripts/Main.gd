@@ -25,6 +25,12 @@ onready var play_button = $MenuLayer/Menu/Play
 
 
 onready var tutorial = $TutorialLayer/Tutorial
+onready var winscreen = $end/win
+onready var losescreen = $end/lose
+onready var menu = $MenuLayer/Menu
+
+
+onready var sounds = [$Audio/disjoint, $Audio/outside, $Audio/snack, $Audio/hydrate, $Audio/themtube]
 
 var data_file
 var actions_json
@@ -47,8 +53,10 @@ func _ready():
 	actions_json = JSON.parse(data_file)
 	actions = actions_json.result
 	play_button.connect("pressed", self, "_on_Play_pressed")
-	# tutorial? menu? first
+	setup_menu()
 	
+func setup_menu():
+	menu.visible = true
 	tutorial.visible = false
 	game_timer.wait_time = gametime
 	text_bubble.visible = false
@@ -56,10 +64,15 @@ func _ready():
 	homeworkbar.max_value = homeworktime
 	clock_hour.rotation_degrees.z = 30
 	clock_min.rotation_degrees.z = -180
+	winscreen.visible = false
+	losescreen.visible = false
+	
+	get_tree().paused = true
 	
 	
 func start_game():
 	# start timer
+	get_tree().paused = false
 	game_timer.start()
 	homework_timer.start()
 	
@@ -77,6 +90,9 @@ func _on_TutorialButton_pressed():
 
 
 func do_action(actionname):
+	for i in sounds:
+		i.playing = false
+	get_node("Audio/" + actionname).playing = true
 	# well, do the action
 	# set up action doing and timer
 	buttons.hide_buttons()
@@ -92,6 +108,8 @@ func do_action(actionname):
 	stop_action()
 	
 func stop_action():
+	for i in sounds:
+		i.playing = false
 	# prevent stoppping it twice or something
 	if doingaction:
 		homework_timer.paused = false
@@ -122,7 +140,6 @@ func _on_game_timer_timeout():
 	text_bubble.visible = true
 	
 	if doingaction:
-		
 		text_bubble_sprite.modulate = "#D23842"
 		text_bubble_label.text = "WHY YOU NO DO WORK!!"
 		parent_anim.play("door_open_bad")
@@ -149,14 +166,14 @@ func go_fast(value):
 		
 func end_game(val):
 	# stop everything
-	
+	get_tree().paused = true
 	if val: # if ya winning
-		$GUILayer/win.visible = true
+		winscreen.visible = true
 	else: # lost the game
-		$GUILayer/lose.visible = true
+		losescreen.visible = true
 
-func play_sound(id):
-	get_node("Audio/" + id)
+func play_sound(id:String, play:bool):
+	get_node("Audio/" + id).playing = play
 
 func _on_homework_timer_timeout():
 	end_game(false)

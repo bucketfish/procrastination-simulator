@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=56 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -28,6 +28,13 @@
 [ext_resource path="res://textures/raindropdiag.png" type="Texture" id=26]
 [ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=27]
 [ext_resource path="res://assets/sfx/typing.wav" type="AudioStream" id=28]
+[ext_resource path="res://assets/sfx/eating.wav" type="AudioStream" id=29]
+[ext_resource path="res://assets/sfx/drinking.wav" type="AudioStream" id=30]
+[ext_resource path="res://assets/sfx/bird.wav" type="AudioStream" id=31]
+[ext_resource path="res://assets/sfx/door.wav" type="AudioStream" id=32]
+[ext_resource path="res://assets/sfx/ThemTube.wav" type="AudioStream" id=33]
+[ext_resource path="res://scenes/lose.tscn" type="PackedScene" id=34]
+[ext_resource path="res://scenes/win.tscn" type="PackedScene" id=35]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -45,6 +52,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 7.58303e-21, -90, 90 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Audio/door:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=12]
 resource_name = "door_open"
@@ -60,6 +79,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector3( 7.58303e-21, -90, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -50, 90 ), Vector3( 0, -90, 90 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Audio/door:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -93,6 +124,18 @@ tracks/1/keys = {
 "args": [ false ],
 "method": "go_fast"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Audio/door:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -181,18 +224,6 @@ tracks/6/keys = {
 "update": 0,
 "values": [ 0 ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("../../../Audio/Typing:playing")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_name = "disjoint"
@@ -269,17 +300,6 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
-}
-tracks/6/type = "method"
-tracks/6/path = NodePath("../../..")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"values": [  ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -623,12 +643,44 @@ tracks/5/keys = {
 "values": [ Vector3( -0.871193, 1.28858, -1.13622 ) ]
 }
 
+[sub_resource type="Animation" id=26]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "animate"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("..:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.05, 0 ) ]
+}
+
 [sub_resource type="DynamicFont" id=19]
 size = 100
 font_data = ExtResource( 19 )
 
 [sub_resource type="ViewportTexture" id=17]
-viewport_path = NodePath("Viewport")
+viewport_path = NodePath("MumTalkViewport")
 
 [sub_resource type="DynamicFont" id=18]
 size = 64
@@ -661,9 +713,11 @@ scale_random = 0.75
 size = Vector2( 0.1, 0.1 )
 
 [node name="Main" type="Spatial"]
+pause_mode = 2
 script = ExtResource( 14 )
 
 [node name="RoomGroup" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="Room" type="MeshInstance" parent="RoomGroup"]
 transform = Transform( -1.57361e-07, 0, -3, 0, 2.7, 0, 3.6, 0, -1.31134e-07, 0, 1.35, 0 )
@@ -743,6 +797,11 @@ anims/outside = SubResource( 10 )
 anims/snack = SubResource( 5 )
 anims/themtube = SubResource( 8 )
 
+[node name="float" type="AnimationPlayer" parent="RoomGroup/CharacterGroup/Character"]
+autoplay = "animate"
+anims/RESET = SubResource( 26 )
+anims/animate = SubResource( 27 )
+
 [node name="righthand" type="Sprite3D" parent="RoomGroup/CharacterGroup"]
 transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, -0.408375, 0.922143, -0.435435 )
 visible = false
@@ -808,6 +867,7 @@ transform = Transform( 0.05, -0.0866025, 0, 0.0866025, 0.05, 0, 0, 0, 0.1, 0, 0,
 texture = ExtResource( 21 )
 
 [node name="Lighting" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="OmniLight" type="OmniLight" parent="Lighting"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.483, 2.019 )
@@ -824,6 +884,7 @@ spot_range = 0.929349
 spot_angle = 52.272
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+pause_mode = 1
 
 [node name="Buttons" type="Control" parent="GUILayer"]
 margin_right = 1920.0
@@ -914,19 +975,55 @@ __meta__ = {
 }
 
 [node name="Audio" type="Spatial" parent="."]
+pause_mode = 1
 
-[node name="Typing" type="AudioStreamPlayer3D" parent="Audio"]
+[node name="disjoint" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
 stream = ExtResource( 28 )
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
+[node name="door" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44414, 1.40567, -0.255935 )
+stream = ExtResource( 32 )
+unit_db = 28.718
+attenuation_filter_db = -2.0
+doppler_tracking = 1
+
+[node name="outside" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35586, 1.50567, -1.85594 )
+stream = ExtResource( 31 )
+unit_db = 80.0
+attenuation_filter_db = -2.0
+doppler_tracking = 1
+
+[node name="snack" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25586, 1.20567, -0.155935 )
+stream = ExtResource( 29 )
+attenuation_filter_db = -2.0
+doppler_tracking = 1
+
+[node name="hydrate" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15586, 1.00567, -0.055935 )
+stream = ExtResource( 30 )
+unit_db = 63.089
+attenuation_filter_db = -2.0
+doppler_tracking = 1
+
+[node name="themtube" type="AudioStreamPlayer3D" parent="Audio"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.95586, 1.00567, -0.955935 )
+stream = ExtResource( 33 )
+attenuation_filter_db = -2.0
+doppler_tracking = 1
+
 [node name="Camera" type="Camera" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 0.99952, 0.0309743, 0, -0.0309743, 0.99952, 0, 1.47345, 4.255 )
 doppler_tracking = 1
 fov = 31.3
 
 [node name="MumTalkSprite" type="Sprite3D" parent="."]
+pause_mode = 1
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, -0.377824, 1.85123, -0.932161 )
 modulate = Color( 0.996078, 0.996078, 0.980392, 1 )
 billboard = 1
@@ -934,6 +1031,7 @@ double_sided = false
 texture = SubResource( 17 )
 
 [node name="MumTalkViewport" type="Viewport" parent="."]
+pause_mode = 1
 size = Vector2( 1000, 600 )
 transparent_bg = true
 render_target_v_flip = true
@@ -959,10 +1057,12 @@ __meta__ = {
 }
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
 
 [node name="TutorialLayer" type="CanvasLayer" parent="."]
+pause_mode = 2
 
 [node name="Tutorial" type="Control" parent="TutorialLayer"]
 anchor_right = 1.0
@@ -1060,20 +1160,26 @@ __meta__ = {
 }
 
 [node name="GameObjects" type="Spatial" parent="."]
+pause_mode = 1
 
 [node name="action_timer" type="Timer" parent="GameObjects"]
+pause_mode = 1
 one_shot = true
 
 [node name="homework_timer" type="Timer" parent="GameObjects"]
+pause_mode = 1
 wait_time = 30.0
 one_shot = true
 
 [node name="game_timer" type="Timer" parent="GameObjects"]
+pause_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="GameObjects"]
+pause_mode = 1
 environment = ExtResource( 7 )
 
 [node name="Particles" type="Particles" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47154, 3.5054, -6.00664 )
 material_override = SubResource( 25 )
 cast_shadow = 0
@@ -1085,6 +1191,7 @@ process_material = SubResource( 23 )
 draw_pass_1 = SubResource( 24 )
 
 [node name="RainPlayer" type="AudioStreamPlayer3D" parent="."]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0188, -1.46046 )
 stream = ExtResource( 25 )
 autoplay = true
@@ -1094,10 +1201,26 @@ doppler_tracking = 1
 [node name="Click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 27 )
 
+[node name="end" type="CanvasLayer" parent="."]
+pause_mode = 2
+
+[node name="lose" parent="end" instance=ExtResource( 34 )]
+visible = false
+
+[node name="win" parent="end" instance=ExtResource( 35 )]
+visible = false
+
+[connection signal="pressed" from="GUILayer/Buttons/ActionButtonLeft" to="GUILayer/Buttons/ActionButtonLeft" method="_on_ActionButtonCenter_pressed"]
+[connection signal="pressed" from="GUILayer/Buttons/ActionButtonCenter" to="GUILayer/Buttons/ActionButtonCenter" method="_on_ActionButtonCenter_pressed"]
+[connection signal="pressed" from="GUILayer/Buttons/ActionButtonRight" to="GUILayer/Buttons/ActionButtonRight" method="_on_ActionButtonCenter_pressed"]
 [connection signal="pressed" from="TutorialLayer/Tutorial/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="timeout" from="GameObjects/homework_timer" to="." method="_on_homework_timer_timeout"]
 [connection signal="timeout" from="GameObjects/game_timer" to="." method="_on_game_timer_timeout"]
+[connection signal="pressed" from="end/lose/back" to="." method="setup_menu"]
+[connection signal="pressed" from="end/win/back" to="." method="setup_menu"]
 
 [editable path="MenuLayer/Menu"]
 [editable path="MenuLayer/Menu/Play"]
 [editable path="MenuLayer/Menu/Quit"]
+[editable path="end/lose"]
+[editable path="end/win"]

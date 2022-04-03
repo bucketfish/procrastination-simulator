@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/typing.wav-2934e69f22e5c7df673d86ef699c018b.sample"
+path="res://.import/ThemTube.wav-d828a2adeb6707b55a7b4760badc970f.sample"
 
 [deps]
 
-source_file="res://assets/sfx/typing.wav"
-dest_files=[ "res://.import/typing.wav-2934e69f22e5c7df673d86ef699c018b.sample" ]
+source_file="res://assets/sfx/ThemTube.wav"
+dest_files=[ "res://.import/ThemTube.wav-d828a2adeb6707b55a7b4760badc970f.sample" ]
 
 [params]
 
