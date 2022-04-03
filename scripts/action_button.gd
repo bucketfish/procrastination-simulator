@@ -22,4 +22,5 @@ func set_label(data):
 
 
 func _on_ActionButtonCenter_pressed():
+	$Click.play()
 	main.do_action(action)

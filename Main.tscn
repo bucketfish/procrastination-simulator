@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://textures/ui/blob.png" type="Texture" id=23]
 [ext_resource path="res://textures/ui/blob_clicked.png" type="Texture" id=24]
 [ext_resource path="res://assets/sfx/rainraw.wav" type="AudioStream" id=25]
+[ext_resource path="res://textures/raindropdiag.png" type="Texture" id=26]
+[ext_resource path="res://assets/sfx/click.wav" type="AudioStream" id=27]
 
 [sub_resource type="SpatialMaterial" id=15]
 
@@ -612,20 +614,27 @@ font_data = ExtResource( 19 )
 size = 48
 font_data = ExtResource( 19 )
 
+[sub_resource type="SpatialMaterial" id=25]
+flags_transparent = true
+flags_unshaded = true
+flags_disable_ambient_light = true
+vertex_color_use_as_albedo = true
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 26 )
+
 [sub_resource type="ParticlesMaterial" id=23]
 emission_shape = 2
 emission_box_extents = Vector3( 0, 2, 0.75 )
 direction = Vector3( 0, 0, 0 )
-gravity = Vector3( -4, -4, 0 )
+gravity = Vector3( -8, -8, 0 )
 scale = 2.0
 scale_random = 0.75
 
-[sub_resource type="SpatialMaterial" id=24]
-flags_unshaded = true
-
-[sub_resource type="PlaneMesh" id=25]
-material = SubResource( 24 )
-size = Vector2( 1, 1 )
+[sub_resource type="QuadMesh" id=24]
+size = Vector2( 0.1, 0.1 )
 
 [node name="Main" type="Spatial"]
 script = ExtResource( 14 )
@@ -1034,18 +1043,24 @@ environment = ExtResource( 7 )
 
 [node name="Particles" type="Particles" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47154, 3.28848, -6.00664 )
+material_override = SubResource( 25 )
+cast_shadow = 0
 amount = 200
 lifetime = 1.25
-randomness = 0.85
+speed_scale = 0.8
+randomness = 0.6
 process_material = SubResource( 23 )
-draw_pass_1 = SubResource( 25 )
+draw_pass_1 = SubResource( 24 )
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="RainPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.0188, -1.46046 )
 stream = ExtResource( 25 )
 autoplay = true
 attenuation_filter_db = -2.0
 doppler_tracking = 1
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
 
 [connection signal="pressed" from="TutorialLayer/Tutorial/TutorialButton" to="." method="_on_TutorialButton_pressed"]
 [connection signal="timeout" from="GameObjects/homework_timer" to="." method="_on_homework_timer_timeout"]
