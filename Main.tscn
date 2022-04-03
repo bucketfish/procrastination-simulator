@@ -1056,7 +1056,6 @@ doppler_tracking = 1
 [node name="door" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44414, 1.40567, -0.255935 )
 stream = ExtResource( 32 )
-unit_db = 30.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
@@ -1069,7 +1068,6 @@ doppler_tracking = 1
 [node name="snack" type="AudioStreamPlayer3D" parent="Audio"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25586, 1.20567, -0.155935 )
 stream = ExtResource( 29 )
-unit_db = 10.0
 attenuation_filter_db = -2.0
 doppler_tracking = 1
 
@@ -1149,7 +1147,7 @@ __meta__ = {
 }
 
 [node name="Tutorial" type="Sprite" parent="TutorialLayer/Tutorial"]
-position = Vector2( 931, 530.5 )
+position = Vector2( 960, 540 )
 scale = Vector2( 1.01399, 1.0125 )
 texture = ExtResource( 22 )
 
