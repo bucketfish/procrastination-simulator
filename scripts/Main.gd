@@ -53,6 +53,14 @@ func _ready():
 	actions_json = JSON.parse(data_file)
 	actions = actions_json.result
 	play_button.connect("pressed", self, "_on_Play_pressed")
+	
+	var screenshotdir = Directory.new()
+	if screenshotdir.dir_exists("user://screenshots"):
+		pass
+	else:
+		screenshotdir.open("user://")
+		screenshotdir.make_dir("screenshots")
+
 	setup_menu()
 	
 func setup_menu():
@@ -188,3 +196,10 @@ func play_sound(id:String, play:bool):
 func _on_homework_timer_timeout():
 	end_game(false)
 
+# Screenshots!
+func _input(event):
+	if event.is_action_pressed("screenshot"):
+		var screenshot = get_viewport().get_texture().get_data()
+		screenshot.flip_y()
+		var datetime = OS.get_datetime()
+		screenshot.save_png("user://screenshots/Screenshot " + str(datetime.year) + "-" + str(datetime.month) + "-" + str(datetime.day) + " at " + str(datetime.hour) + "." + str(datetime.minute) + "." + str(datetime.second) + ".png")

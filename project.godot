@@ -10,12 +10,14 @@ config_version=4
 
 [application]
 
-config/name="Ld 50"
+config/name="Procrastination Simulator"
 run/main_scene="res://Main.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Procrastination Simulator"
 boot_splash/image="res://publicity/icon.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.92549, 0.721569, 0.647059, 1 )
-config/icon="res://icon.png"
+config/icon="res://publicity/icon.png"
 
 [display]
 
@@ -28,6 +30,14 @@ window/stretch/aspect="keep"
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/camera_monitor/plugin.cfg" )
+
+[input]
+
+screenshot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777245,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
