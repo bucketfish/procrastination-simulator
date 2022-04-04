@@ -38,7 +38,7 @@
 [ext_resource path="res://textures/room/chair_seat.png" type="Texture" id=36]
 [ext_resource path="res://textures/room/chair_back.png" type="Texture" id=37]
 [ext_resource path="res://textures/room/legs.png" type="Texture" id=38]
-[ext_resource path="res://assets/Music/Leaves.wav" type="AudioStream" id=39]
+[ext_resource path="res://ost/both.wav" type="AudioStream" id=39]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=40]
 [ext_resource path="res://textures/room/wall.png" type="Texture" id=41]
 [ext_resource path="res://textures/room/wall3.png" type="Texture" id=42]
@@ -848,7 +848,7 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.983664, 1.01467, 0.39
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 32 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="CharacterGroup" type="Spatial" parent="RoomGroup"]

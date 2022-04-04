@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Leaves.wav-2dd11a06cdc5abe97d4b88b24d809524.sample"
+
+[deps]
+
+source_file="res://ost/Leaves.wav"
+dest_files=[ "res://.import/Leaves.wav-2dd11a06cdc5abe97d4b88b24d809524.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0
