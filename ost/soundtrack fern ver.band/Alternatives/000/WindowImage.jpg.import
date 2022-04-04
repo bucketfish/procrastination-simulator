@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/WindowImage.jpg-7b707fdd0f5fa959dbb08aee5099781d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://ost/soundtrack.band/Alternatives/000/WindowImage.jpg"
+dest_files=[ "res://.import/WindowImage.jpg-7b707fdd0f5fa959dbb08aee5099781d.stex" ]
 
 [params]
 
