@@ -25,6 +25,8 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+#builds folder
+builds/
 
 # Imported translations (automatically generated from CSV files)
 *.translation

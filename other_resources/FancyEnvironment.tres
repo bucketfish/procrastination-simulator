@@ -20,7 +20,6 @@ ssao_enabled = true
 ssao_radius = 0.8
 ssao_light_affect = 0.5
 ssao_edge_sharpness = 0.0
-dof_blur_near_enabled = true
 dof_blur_near_distance = 4.5
 dof_blur_near_transition = 0.6
 dof_blur_near_amount = 0.08
