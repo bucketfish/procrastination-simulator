@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://textures/room/door.png" type="Texture" id=1]
 [ext_resource path="res://textures/clock/back.png" type="Texture" id=2]
@@ -45,6 +45,8 @@
 [ext_resource path="res://textures/room/wall2.png" type="Texture" id=43]
 [ext_resource path="res://assets/sfx/writing.wav" type="AudioStream" id=44]
 [ext_resource path="res://textures/things_on_table/cat0000.png" type="Texture" id=45]
+[ext_resource path="res://textures/things_on_table/cat0002.png" type="Texture" id=46]
+[ext_resource path="res://textures/things_on_table/cat0001.png" type="Texture" id=47]
 
 [sub_resource type="SpatialMaterial" id=28]
 
@@ -173,10 +175,10 @@ tracks/2/keys = {
 
 [sub_resource type="SpriteFrames" id=32]
 animations = [ {
-"frames": [ ExtResource( 45 ) ],
+"frames": [ ExtResource( 45 ), ExtResource( 47 ), ExtResource( 46 ), ExtResource( 47 ) ],
 "loop": true,
 "name": "default",
-"speed": 2.0
+"speed": 1.5
 } ]
 
 [sub_resource type="Animation" id=4]
@@ -846,6 +848,7 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.983664, 1.01467, 0.39
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 32 )
+frame = 3
 playing = true
 
 [node name="CharacterGroup" type="Spatial" parent="RoomGroup"]
@@ -1014,31 +1017,29 @@ __meta__ = {
 }
 
 [node name="ActionButtonLeft" parent="GUILayer/Buttons" instance=ExtResource( 15 )]
-margin_left = -429.0
+margin_left = -717.0
 margin_top = -394.0
-margin_right = -173.0
+margin_right = -461.0
 margin_bottom = -138.0
 
 [node name="ActionButtonCenter" parent="GUILayer/Buttons" instance=ExtResource( 15 )]
-margin_left = -83.0
+margin_left = -371.0
 margin_top = -511.0
-margin_right = 173.0
+margin_right = -115.0
 margin_bottom = -255.0
 
 [node name="ActionButtonRight" parent="GUILayer/Buttons" instance=ExtResource( 15 )]
-margin_left = 283.0
+margin_left = -5.0
 margin_top = -420.0
-margin_right = 539.0
+margin_right = 251.0
 margin_bottom = -164.0
 
 [node name="HomeWorkBar" type="ProgressBar" parent="GUILayer"]
-anchor_left = 0.5
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -1435.0
+margin_left = -470.0
 margin_top = -16.0
-margin_right = -407.0
+margin_right = 558.0
 margin_bottom = 16.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 512, 16 )
@@ -1051,13 +1052,13 @@ __meta__ = {
 }
 
 [node name="ActivityProgress" type="ProgressBar" parent="GUILayer"]
-anchor_left = 0.5
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = 411.0
+margin_left = -558.0
 margin_top = -16.0
-margin_right = 1439.0
+margin_right = 470.0
 margin_bottom = 16.0
 rect_rotation = 90.0
 rect_pivot_offset = Vector2( 512, 16 )
@@ -1190,6 +1191,7 @@ __meta__ = {
 pause_mode = 2
 
 [node name="Menu" parent="MenuLayer" instance=ExtResource( 20 )]
+visible = false
 
 [node name="Click" parent="MenuLayer/Menu" index="6"]
 volume_db = -15.0
@@ -1198,6 +1200,7 @@ volume_db = -15.0
 pause_mode = 2
 
 [node name="Tutorial" type="Control" parent="TutorialLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {

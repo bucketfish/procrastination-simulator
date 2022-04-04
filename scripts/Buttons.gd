@@ -6,6 +6,8 @@ onready var action_center = $ActionButtonCenter
 onready var action_right = $ActionButtonRight
 onready var main = get_node("/root/Main")
 
+var normalized_mouse_pos = Vector2()
+var viewport_size
 
 func choose_random():
 	
@@ -31,3 +33,14 @@ func draw_buttons():
 	
 func hide_buttons():
 	visible = false
+
+
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		#print("Mouse Motion at: ", event.position)
+		viewport_size = get_viewport().get_visible_rect().size
+		normalized_mouse_pos.x = event.position.x / viewport_size.x
+		normalized_mouse_pos.y = event.position.y / viewport_size.y
+	self.rect_position.x = normalized_mouse_pos.x * 50
+	self.rect_position.y = normalized_mouse_pos.y * 5
