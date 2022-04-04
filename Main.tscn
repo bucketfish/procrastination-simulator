@@ -848,7 +848,7 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.983664, 1.01467, 0.39
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 32 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="CharacterGroup" type="Spatial" parent="RoomGroup"]

@@ -18,6 +18,7 @@ boot_splash/image="res://publicity/icon.png"
 boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.92549, 0.721569, 0.647059, 1 )
 config/icon="res://publicity/icon.png"
+config/windows_native_icon="res://publicity/icon.ico"
 
 [display]
 
