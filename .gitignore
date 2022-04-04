@@ -26,10 +26,6 @@ Temporary Items
 .apdisk
 
 
-
-# Godot-specific ignores
-.import/
-
 # Imported translations (automatically generated from CSV files)
 *.translation
 
