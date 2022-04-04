@@ -836,7 +836,7 @@ alpha_cut = 2
 texture = ExtResource( 12 )
 
 [node name="computer_screen" type="Sprite3D" parent="RoomGroup/TableGroup/OnTableGroup/LaptopGroup"]
-transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.17208, 1.12532, -1.28423 )
+transform = Transform( 0.0684344, 0, 0.072916, 0, 0.1, 0, -0.072916, 0, 0.0684344, -1.14073, 1.12532, -1.28423 )
 shaded = true
 alpha_cut = 2
 texture = ExtResource( 11 )
@@ -848,7 +848,7 @@ transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.983664, 1.01467, 0.39
 billboard = 1
 alpha_cut = 2
 frames = SubResource( 32 )
-frame = 3
+frame = 2
 playing = true
 
 [node name="CharacterGroup" type="Spatial" parent="RoomGroup"]
